@@ -1,0 +1,1861 @@
+[
+  {
+    "id": "697b3a5836d3def04ab76db4",
+    "name": "Màn hình ViewSonic VX2479A-HD-PRO 24\" IPS 240Hz 1ms",
+    "category": "Màn Hình",
+    "price": 21000000,
+    "brand": "ViewSonic",
+    "specs": {
+      "fpsGeneric": "Full HD (1080P)",
+      "score": "144Hz",
+      "v3": "29 inch"
+    },
+    "description": "Nếu bạn đang cần một chiếc màn hình 24 inch với tốc độ phản hồi nhanh chóng, hình ảnh mượt mà trong phân khúc giá tốt thì bạn có thể tham khảo qua Màn hình ViewSonic VX2479A-HD-PRO 24\" IPS 240Hz 1ms c"
+  },
+  {
+    "id": "699ed62d05171e0294f7714c",
+    "name": "Màn hình LG 27G610A-B 27\" IPS 2K 200Hz Gsync chuyên game",
+    "category": "Màn Hình",
+    "price": 5190000,
+    "brand": "LG",
+    "specs": {
+      "fpsGeneric": "4K (UHD)",
+      "score": "240Hz",
+      "v3": "29 inch"
+    },
+    "description": "LG UltraGear 27G610A-B có khả năng sẽ thiết lập một ngưỡng cấu hình mới cho game thủ. Độ phân giải 2K QHD đi cùng con số 200Hz như “cơn mưa” giải tỏa sự khao khát về một chiếc màn hình hoàn thành tốt "
+  },
+  {
+    "id": "699ed81705171e0294f7724b",
+    "name": "Bàn Phím Cơ DareU EK75 White Black DareU Dream switch (keycap PBT)",
+    "category": "Bàn phím cơ",
+    "price": 530000,
+    "brand": "DAREU",
+    "specs": {
+      "fpsGeneric": "Dream Switch",
+      "score": "Có dây",
+      "v3": "75%"
+    },
+    "description": "DareU EK75 White Black dòng bàn phím cơ sở hữu thiết kế siêu nhỏ gọn với layout 75%, 80 nút bấm hỗ trợ tốt mọi nhu cầu sử dụng ở bất kỳ đâu khi cần. Đặc biệt, nhờ vào phối màu basic trắng đen được kết"
+  },
+  {
+    "id": "699eebf8048c286c70e3338f",
+    "name": "Bàn Phím Cơ AULA S100 PRO TM (Red Switch) S100PRO03",
+    "category": "Bàn phím cơ",
+    "price": 750000,
+    "brand": "AULA",
+    "specs": {
+      "fpsGeneric": "Red Switch",
+      "score": "không dây",
+      "v3": "98%"
+    },
+    "description": "Với thiết kế 3 chế độ kết nối linh hoạt cùng switch Red êm ái, bạn sẽ có thể gõ phím mượt mà từ sáng đến tối. Dù đang \"chiến\" game hay soạn thảo văn bản, chiếc phím này luôn sẵn sàng đồng hành cùng bạ"
+  },
+  {
+    "id": "699feca0380e6e6bce2dc1f9",
+    "name": "Bàn phím cơ E-Dra không dây EK375 Pro Alpha Brown + Red Switch",
+    "category": "Bàn phím cơ",
+    "price": 1290000,
+    "brand": "E-DRA",
+    "specs": {
+      "fpsGeneric": "Tactile",
+      "score": "không dây",
+      "v3": "Fullsize"
+    },
+    "description": "Switch bấm độc quyền của E-Dra EK3104L có ba phiên bản: Blue, Red và Brown. Các switch này cung cấp độ bền cao và cảm giác gõ tương đương với các loại switch cao cấp khác trên thị trường."
+  },
+  {
+    "id": "69a002a47b37fb129d96397e",
+    "name": "Màn hình MSI MAG 245F X24 24\" Rapid IPS 240Hz",
+    "category": "Màn Hình",
+    "price": 3090000,
+    "brand": "MSI",
+    "specs": {
+      "fpsGeneric": "2K (1440P)",
+      "score": "100Hz",
+      "v3": "24 inch"
+    },
+    "description": "Mang đến sự cân bằng giữa tốc độ và chất lượng hình ảnh, Màn hình MSI MAG 245F X24 24\" Rapid IPS 240Hz chuyên game là một lựa chọn lý tưởng cho các game thủ eSports."
+  },
+  {
+    "id": "69a00ab8aae51b094190022c",
+    "name": "Chuột Gaming Logitech G304 Wireless White",
+    "category": "Chuột Gaming",
+    "price": 720000,
+    "brand": "Logitech",
+    "specs": {
+      "fpsGeneric": "12000 DPI",
+      "score": "không dây",
+      "v3": "1000 Hz"
+    },
+    "description": "G304 là một trong những dòng sản phẩm chuột gaming sở hữu công nghệ LIGHTSPEED, mang đến những trải nghiệm chơi game thú vị."
+  },
+  {
+    "id": "69a00d9aaae51b094190067c",
+    "name": "Chuột Gaming Razer Basilisk V3 X HyperSpeed",
+    "category": "Chuột Gaming",
+    "price": 1590000,
+    "brand": "RAZER",
+    "specs": {
+      "fpsGeneric": "18000 DPI",
+      "score": "Đa kết nối",
+      "v3": "1000 Hz"
+    },
+    "description": "Basilisk V3 X HyperSpeed là một trong những dòng chuột không dây chơi game chất lượng cao thuộc Series Razer Ultimate trứ danh."
+  },
+  {
+    "id": "69a00f8aaae51b094190090f",
+    "name": "Chuột Gaming ASUS ROG Strix Impact III Wireless",
+    "category": "Chuột Gaming",
+    "price": 1090000,
+    "brand": "ASUS",
+    "specs": {
+      "fpsGeneric": "36000 DPI",
+      "score": "Bluetooth / Không dây",
+      "v3": "1000Hz"
+    },
+    "description": "Chuột ASUS ROG Strix Impact III Wireless được xem là một trong những sản phẩm chuột không dây thừa hưởng đủ khả năng cùng người dùng chinh chiến qua nhiều game sở hữu tốc độ cao."
+  },
+  {
+    "id": "69a01471aae51b0941902187",
+    "name": "Card màn hình MSI GeForce RTX 3060 Ventus 2X OC 12G",
+    "category": "VGA - Card Màn Hình",
+    "price": 8290000,
+    "brand": "MSI",
+    "specs": {
+      "fpsGeneric": 150,
+      "score": 250000,
+      "isAiReady": true
+    },
+    "description": "MSI GeForce RTX 3060 VENTUS 2X 12G OC sở hữu tông màu đen chủ đạo, với các vết cắt được hoàn thiện tỉ mỉ, tất cả đều bật lên sự mạnh mẽ và quyến rũ của chiếc card màn hình đi cùng những chiếc PC Gamin"
+  },
+  {
+    "id": "69a01812aae51b0941903018",
+    "name": "Card Màn Hình VGA GIGABYTE GeForce GTX 1660 Ti OC 6G",
+    "category": "VGA - Card Màn Hình",
+    "price": 6990000,
+    "brand": "GIGABYTE",
+    "specs": {
+      "fpsGeneric": 120,
+      "score": 220000,
+      "isAiReady": true
+    },
+    "description": "GeForce GTX 1660 Ti Windforce OC 6G cải tiến với hệ thống làm mát WINDFORCE 2X, cùng một số cải tiến để mang lại hiệu quả cao hơn."
+  },
+  {
+    "id": "69a01cc4aae51b094190391f",
+    "name": "Card màn hình GIGABYTE GeForce RTX 4060 AERO OC 8G",
+    "category": "VGA - Card Màn Hình",
+    "price": 10990000,
+    "brand": "GIGABYTE",
+    "specs": {
+      "fpsGeneric": 170,
+      "score": 260000,
+      "isAiReady": true
+    },
+    "description": "NVIDIA đã tạo ra RTX 4060 sở hữu cho mình sức mạnh tương xứng trong tầm giá. Sức mạnh này đã được GIGABYTE cụ thể hóa qua chiếc card màn hình, GIGABYTE GeForce RTX 4060 AERO OC 8G."
+  },
+  {
+    "id": "69a02199aae51b094190490b",
+    "name": "Mainboard ASUS ROG Strix B660-I Gaming WiFi",
+    "category": "Mainboard",
+    "price": 5290000,
+    "brand": "ASUS",
+    "specs": {
+      "fpsGeneric": "B660",
+      "score": "MITX",
+      "v3": "LGA 1700"
+    },
+    "description": "Bo mạch chủ ASUS ROG Strix B660-I Gaming WiFi sở hữu khả năng cung cấp năng lượng cao cấp vào một thiết bị dạng ITX mini nhỏ gọn để giải phóng toàn bộ sức mạnh của bộ vi xử lý Intel Core thế hệ thứ 12"
+  },
+  {
+    "id": "69a025edc04ed5cf599334af",
+    "name": "Card màn hình ASUS ROG Strix GeForce RTX 5070 Ti 16GB GDDR7",
+    "category": "VGA - Card Màn Hình",
+    "price": 39390000,
+    "brand": "ASUS",
+    "specs": {
+      "fpsGeneric": 240,
+      "score": 200000,
+      "isAiReady": false
+    },
+    "description": "Là đại diện cao cấp nhất của dòng RTX 5070 Ti, Asus ROG Strix RTX 5070 Ti OC Edition 16GB là lựa chọn lý tưởng cho những game thủ và người dùng sáng tạo nội dung chuyên nghiệp."
+  },
+  {
+    "id": "69a03967935d82a220a3e248",
+    "name": "Card màn hình ASUS Prime GeForce RTX 5070 Ti 16GB GDDR7 OC Edition",
+    "category": "VGA - Card Màn Hình",
+    "price": 29490000,
+    "brand": "ASUS",
+    "specs": {
+      "fpsGeneric": 200,
+      "score": 20000,
+      "isAiReady": false
+    },
+    "description": "Trải nghiệm hiệu năng nền tảng Prime với Prime GeForce RTX 5070 Ti, một Card GeForce dòng SFF-Ready cho phom máy nhỏ, có thiết kế 2,5 khe cắm để tương thích đa dạng, được tăng cường bởi thiết lập ba q"
+  },
+  {
+    "id": "69a03b6c935d82a220a3e4d6",
+    "name": "Card màn hình ASUS TUF Gaming GeForce RTX 5070 Ti 16GB GDDR7 OC Edition ",
+    "category": "VGA - Card Màn Hình",
+    "price": 31990000,
+    "brand": "ASUS",
+    "specs": {
+      "fpsGeneric": 220,
+      "score": 23000,
+      "isAiReady": false
+    },
+    "description": "Kiến trúc NVIDIA Blackwell được nâng cao nhờ khả năng tản nhiệt và cung cấp điện năng được cải tiến, được gia cố chắc chắn để có độ bền vượt trội. Khóa, tải và thống trị với TUF Gaming GeForce RTX™ 50"
+  },
+  {
+    "id": "69a03d5f935d82a220a3e778",
+    "name": " Card Màn Hình Colorful iGame GeForce RTX 5070 Ti Ultra W OC 16GB",
+    "category": "VGA - Card Màn Hình",
+    "price": 29900000,
+    "brand": "colorful",
+    "specs": {
+      "fpsGeneric": 180,
+      "score": 18000,
+      "isAiReady": false
+    },
+    "description": "iGame GeForce RTX 5070 Ti Ultra W OC 16GB là một trong những mẫu card đồ họa độc đáo nhất trên thị trường hiện nay, với thiết kế lấy cảm hứng từ phong cách HipHop Artvà Graffiti RGB, mang đến sự cá tí"
+  },
+  {
+    "id": "69a03f82935d82a220a3ea4a",
+    "name": "Card màn hình GIGABYTE GeForce RTX 5070 Ti EAGLE OC ICE SFF 16G",
+    "category": "VGA - Card Màn Hình",
+    "price": 31490000,
+    "brand": "gigabyte",
+    "specs": {
+      "fpsGeneric": 240,
+      "score": 18000,
+      "isAiReady": false
+    },
+    "description": "Card Màn Hình Gigabyte GeForce RTX 5070 Ti EAGLE OC ICE SFF 16G sở hữu hiệu năng mạnh mẽ, đáp ứng tốt nhu cầu Build PC cấu hình mạnh, đam mê hiệu suất cao."
+  },
+  {
+    "id": "69a041f7935d82a220a3f8fb",
+    "name": "Card màn hình GIGABYTE GeForce RTX 5070 Ti WINDFORCE OC SFF 16G",
+    "category": "VGA - Card Màn Hình",
+    "price": 30990000,
+    "brand": "GIGABYTE",
+    "specs": {
+      "fpsGeneric": 240,
+      "score": 19999,
+      "isAiReady": false
+    },
+    "description": "Card màn hình VGA Gigabyte GeForce RTX™ 5070 Ti WINDFORCE OC SFF 16G cung cấp hiệu suất đồ họa vượt trội, bộ nhớ 16GB GDDR7, hệ thống làm mát WINDFORCE.."
+  },
+  {
+    "id": "69a04399935d82a220a3fc36",
+    "name": "Card màn hình GIGABYTE GeForce RTX 5070 Ti AERO OC 16G",
+    "category": "VGA - Card Màn Hình",
+    "price": 33990000,
+    "brand": "GIGABYTE",
+    "specs": {
+      "fpsGeneric": 240,
+      "score": 230000,
+      "isAiReady": false
+    },
+    "description": "Nâng tầm trải nghiệm gaming và sáng tạo với card đồ họa RTX 5070 Ti mạnh mẽ, kiến trúc Blackwell đột phá. Hiệu năng vượt trội, DLSS 4 tiên tiến, ..."
+  },
+  {
+    "id": "69a04550935d82a220a3ff99",
+    "name": "Card màn hình GIGABYTE GeForce RTX 5070 Ti EAGLE OC SFF 16G",
+    "category": "VGA - Card Màn Hình",
+    "price": 30990000,
+    "brand": "GIGABYTE",
+    "specs": {
+      "fpsGeneric": 240,
+      "score": 215000,
+      "isAiReady": false
+    },
+    "description": "Card màn hình Gigabyte RTX 5070 Ti EAGLE OC SFF là sự lựa chọn tuyệt vời cho những game thủ và nhà sáng tạo nội dung tìm kiếm sự kết hợp giữa hiệu suất cực mạnh và khả năng làm mát tối ưu trong một th"
+  },
+  {
+    "id": "69a046df935d82a220a4032a",
+    "name": "Card màn hình GIGABYTE GeForce RTX 5070 Ti GAMING OC 16G",
+    "category": "VGA - Card Màn Hình",
+    "price": 33990000,
+    "brand": "GIGABYTE",
+    "specs": {
+      "fpsGeneric": 240,
+      "score": 240001,
+      "isAiReady": false
+    },
+    "description": "Là một trong những sản phẩm cao cấp thuộc dòng VGA Nvidia RTX 5000 Series, Card màn hình Gigabyte RTX 5070 Ti GAMING OC là sự lựa chọn tuyệt vời cho những game thủ và nhà sáng tạo nội dung."
+  },
+  {
+    "id": "69a0487c935d82a220a406f2",
+    "name": "Card màn hình GIGABYTE AORUS GeForce RTX 5070 Ti MASTER 16G",
+    "category": "VGA - Card Màn Hình",
+    "price": 36490000,
+    "brand": "gigabyte",
+    "specs": {
+      "fpsGeneric": 240,
+      "score": 200000,
+      "isAiReady": false
+    },
+    "description": "Là một trong những sản phẩm cao cấp thuộc dòng VGA Nvidia RTX 5000 Series, Card màn hình Gigabyte RTX 5070 Ti MASTER là sự lựa chọn tuyệt vời cho những game thủ và nhà sáng tạo nội dung tìm kiếm sự kế"
+  },
+  {
+    "id": "69a04a10935d82a220a40acd",
+    "name": "Card màn hình MSI GeForce RTX 5070 Ti 16G VENTUS 3X PZ OC",
+    "category": "VGA - Card Màn Hình",
+    "price": 28990000,
+    "brand": "MSI",
+    "specs": {
+      "fpsGeneric": 230,
+      "score": 210000,
+      "isAiReady": false
+    },
+    "description": "MSI GeForce RTX 5070 Ti 16G VENTUS 3X PZ OC là card đồ họa cao cấp dựa trên kiến trúc NVIDIA Blackwell, trang bị 16GB GDDR7, tối ưu cho chơi game 4K và ứng dụng AI. Nổi bật với thiết kế giấu cáp (Proj"
+  },
+  {
+    "id": "69a04bf0935d82a220a40ed5",
+    "name": "Card màn hình MSI GeForce RTX 5070 Ti 16G VENTUS 3X OC",
+    "category": "VGA - Card Màn Hình",
+    "price": 27990000,
+    "brand": "MSI",
+    "specs": {
+      "fpsGeneric": 240,
+      "score": 199999,
+      "isAiReady": false
+    },
+    "description": "Bạn đang tìm kiếm một card đồ họa cao cấp để chơi game 4K mượt mà? MSI RTX 5070 Ti 16GB GDDR7 là giải pháp hoàn hảo, mang đến hiệu suất vượt trội và khả năng xử lý đồ họa đỉnh cao cho mọi tựa game. Vớ"
+  },
+  {
+    "id": "69a04dba935d82a220a4130b",
+    "name": "Card màn hình MSI GeForce RTX 5070 Ti 16G MLG EDITION",
+    "category": "VGA - Card Màn Hình",
+    "price": 32990000,
+    "brand": "MSI",
+    "specs": {
+      "fpsGeneric": 240,
+      "score": 280000,
+      "isAiReady": false
+    },
+    "description": "Card màn hình MSI GeForce RTX 5070 Ti 16G MLG EDITION là dòng card đồ họa cao cấp dựa trên kiến trúc NVIDIA Blackwell và công nghệ DLSS 4. Sản phẩm nổi bật với bộ nhớ 16GB GDDR7, 8960 nhân CUDA, hệ th"
+  },
+  {
+    "id": "69a04fa1935d82a220a41767",
+    "name": "Card màn hình MSI GeForce RTX 5070 Ti 16G GAMING TRIO OC White",
+    "category": "VGA - Card Màn Hình",
+    "price": 32490000,
+    "brand": "MSI",
+    "specs": {
+      "fpsGeneric": 240,
+      "score": 280000,
+      "isAiReady": false
+    },
+    "description": "MSI GeForce RTX 5070 Ti 16G GAMING TRIO OC White là card màn hình thế hệ mới, được thiết kế đặc biệt cho những game thủ và nhà sáng tạo nội dung. Với khả năng xử lý đồ họa mạnh mẽ, card màn hình này h"
+  },
+  {
+    "id": "69a0512e935d82a220a41bf1",
+    "name": "Card màn hình MSI GeForce RTX 5070 Ti 16G VENTUS 3X OC Plus",
+    "category": "VGA - Card Màn Hình",
+    "price": 28990000,
+    "brand": "MSI",
+    "specs": {
+      "fpsGeneric": 240,
+      "score": 280000,
+      "isAiReady": true
+    },
+    "description": "Card màn hình MSI GeForce RTX 5070 Ti 16G VENTUS 3X OC Plus là dòng card đồ họa cao cấp dựa trên kiến trúc NVIDIA Blackwell, nổi bật với bộ nhớ 16GB GDDR7, tốc độ 28 Gbps và hệ thống tản nhiệt 3 quạt "
+  },
+  {
+    "id": "69a052e8935d82a220a42095",
+    "name": "Card màn hình MSI GeForce RTX 5070 Ti 16G VANGUARD SOC",
+    "category": "VGA - Card Màn Hình",
+    "price": 31490000,
+    "brand": "MSI",
+    "specs": {
+      "fpsGeneric": "RTX 5070 Ti",
+      "score": "16GB",
+      "v3": "3 Fans"
+    },
+    "description": "Card màn hình MSI GeForce RTX 5070 Ti 16GB DDR7 VANGUARD SOC là một trong những sản phẩm nổi bật nhất trong dòng card đồ họa gaming hiện nay. Được thiết kế đặc biệt cho các ..."
+  },
+  {
+    "id": "69a054c9935d82a220a42838",
+    "name": "Card màn hình MSI GeForce RTX 5070 Ti 16G INSPIRE 3X OC PLUS",
+    "category": "VGA - Card Màn Hình",
+    "price": 29990000,
+    "brand": "MSI",
+    "specs": {
+      "fpsGeneric": "abc",
+      "score": "16GB",
+      "v3": "3"
+    },
+    "description": "MSI RTX 5070 Ti 16GB INSPIRE 3X OC PLUS là mẫu card đồ họa cao cấp đến từ MSI, được thiết kế để mang lại hiệu suất vượt trội trong mọi tác vụ, từ gaming đến sáng tạo nội dung. Với GPU NVIDIA GeForce R"
+  },
+  {
+    "id": "69a2a8db4586afdefc6de9d0",
+    "name": "Chuột GAMING AKKO Smart 1 Sailor Moon",
+    "category": "Chuột Gaming",
+    "price": 290000,
+    "brand": "AKKO",
+    "specs": {
+      "fpsGeneric": "1200 DPI",
+      "score": "không dây",
+      "v3": "125 Hz"
+    },
+    "description": "Chuột AKKO Smart 1 Sailor Moon lấy cảm hứng từ Sailor Moon mang đến một diện mạo cá tính và thu hút. Trên thân chuột có họa tiết ngôi sao lấp lánh, kèm theo là biểu tượng Sailor Moon tinh tế trên nút "
+  },
+  {
+    "id": "69a2ad2f4586afdefc6dfcc9",
+    "name": "Màn hình Acer VG271U M3 27\" IPS 2K 180Hz Chuyên Game",
+    "category": "Màn Hình",
+    "price": 11000000,
+    "brand": "ACER",
+    "specs": {
+      "fpsGeneric": "2K (1440P)",
+      "score": "180Hz",
+      "v3": "27 inch"
+    },
+    "description": "Thuộc dòng sản phẩm cao cấp của nhà ViewSonic, chiếc màn hình ViewSonic VX2882-4KP 28\" IPS 4K 150Hz HDR10 USBC cung cấp một chế độ hiệu năng tuyệt đỉnh đến từ chất lượng hình ảnh, tốc độ xử lý dữ liệu"
+  },
+  {
+    "id": "69b2d0878392460a0f388439",
+    "name": "Mainboard MSI PRO A620AM-B EVO (DDR5) Chuyên Game",
+    "category": "Mainboard",
+    "price": 2290000,
+    "brand": "MSI",
+    "specs": {
+      "fpsGeneric": "A620",
+      "score": "MATX",
+      "v3": "AMD AM5"
+    },
+    "description": "MSI PRO A620AM-B-EVO là bo mạch chủ sử dụng chipset A620 dành cho nền tảng AM5, mang đến lựa chọn tiết kiệm nhưng vẫn đầy đủ các tính năng cho dàn PC."
+  },
+  {
+    "id": "69b39e62b66ca25239bcc945",
+    "name": "Màn hình GIGABYTE M27UP 27\" IPS 4K 160Hz-FHD 320Hz chuyên game",
+    "category": "Màn Hình",
+    "price": 9990000,
+    "brand": "GIGABYTE",
+    "specs": {
+      "fpsGeneric": "4K (UHD)",
+      "score": "320Hz",
+      "v3": "27 inch"
+    },
+    "description": "Nhờ công nghê Dual Mode thông minh, bạn có thể dễ dàng chuyển đổi giữa chế độ 4K 160Hz cho game đồ họa cao và chế độ FHD 320Hz cho các tựa game eSports cần tốc độ. Kết hợp với tấm nền IPS cao cấp, M27"
+  },
+  {
+    "id": "69b4ffc6985fbacb94026e72",
+    "name": "Màn hình Gaming AOC 22B15H2 22\" IPS 120Hz",
+    "category": "Màn Hình",
+    "price": 1550000,
+    "brand": "AOC",
+    "specs": {
+      "fpsGeneric": "Full HD (1080P)",
+      "score": "120Hz",
+      "v3": "22 inch"
+    },
+    "description": "Với tần số quét 120Hz mượt mà và tấm nền IPS hiển thị màu sắc chân thực, Màn hình AOC 22B15H2 22\" IPS 120Hz mang đến một trải nghiệm thị giác vượt trội trong phân khúc."
+  },
+  {
+    "id": "69b501ce985fbacb94027347",
+    "name": "Màn hình LG 27GX704A-B UltraGear 27\" OLED 2K 240Hz G-Sync",
+    "category": "Màn Hình",
+    "price": 15990000,
+    "brand": "LG",
+    "specs": {
+      "fpsGeneric": "2K (QHD)",
+      "score": "240Hz",
+      "v3": "27 inch"
+    },
+    "description": "Ngôn ngữ thiết kế đặc trưng của dòng UltraGear vẫn giữ lại cho LG 27GX704A-B với logo thương hiệu của mình. Đó còn là thiết kế hexagon ở mặt sau chiếc màn hình máy tính làm điểm tựa cho thiết kế viền "
+  },
+  {
+    "id": "69b50435985fbacb94027748",
+    "name": "Màn hình Asus ROG Strix XG32UQ 32\" Fast IPS 4K 160Hz Gsync",
+    "category": "Màn Hình",
+    "price": 21990000,
+    "brand": "ASUS",
+    "specs": {
+      "fpsGeneric": "4K (UHD)",
+      "score": "160Hz",
+      "v3": "32 inch"
+    },
+    "description": "Màn hình ASUS ROG Strix XG32UQ là lựa chọn đỉnh cao cho các game thủ với kích thước 32 inch, độ phân giải 4K UHD sắc nét và tần số quét lên đến 160Hz."
+  },
+  {
+    "id": "69b507ae985fbacb94027ec8",
+    "name": "Màn hình Acer XV242 F 25\" 540Hz chuyên game",
+    "category": "Màn Hình",
+    "price": 15990000,
+    "brand": "ACER",
+    "specs": {
+      "fpsGeneric": "Full HD (1080P)",
+      "score": "540Hz",
+      "v3": "24 inch"
+    },
+    "description": "Sản phẩm nổi bật với tần số quét lên đến 540Hz, một trong những mức refresh rate cao nhất trên thị trường hiện nay, giúp hình ảnh chuyển động mượt mà và giảm tối đa độ trễ khi chơi các tựa game FPS ha"
+  },
+  {
+    "id": "69b5147b985fbacb9402880b",
+    "name": "Mainboard ASUS ProArt Z890-CREATOR WIFI (DDR5)",
+    "category": "Mainboard",
+    "price": 14990000,
+    "brand": "ASUS",
+    "specs": {
+      "fpsGeneric": "Z890",
+      "score": "ATX (tiêu chuẩn)",
+      "v3": "LGA 1851"
+    },
+    "description": "Hỗ trợ Bộ xử lý Intel Core™ Ultra (Series 2), LGA1851.\nHỗ trợ Công nghệ Intel Turbo Boost 2.0 và Công nghệ Intel Turbo Boost Max 3.0"
+  },
+  {
+    "id": "69b519c9985fbacb94028d99",
+    "name": "Mainboard GIGABYTE X870 EAGLE WIFI7 (DDR5)",
+    "category": "Mainboard",
+    "price": 6490000,
+    "brand": "GIGABYTE",
+    "specs": {
+      "fpsGeneric": "X870",
+      "score": "ATX (tiêu chuẩn)",
+      "v3": "AMD AM5"
+    },
+    "description": "AMD Socket AM5, hỗ trợ cho:\nBộ xử lý AMD Ryzen™ 9000 Series/\nBộ xử lý AMD Ryzen™ 8000 Series/\nBộ xử lý AMD Ryzen™ 7000 Series"
+  },
+  {
+    "id": "69b51c0c985fbacb94029375",
+    "name": "Mainboard MSI PRO B760M-A WIFI DDR4",
+    "category": "Mainboard",
+    "price": 3490000,
+    "brand": "MSI",
+    "specs": {
+      "fpsGeneric": "B760",
+      "score": "MATX",
+      "v3": "LGA 1700"
+    },
+    "description": "Intel® Socket LGA1700 cho Bộ xử lý Intel® Core ™, Pentium® Gold và Celeron® thế hệ thứ 12,13 và 14"
+  },
+  {
+    "id": "69b51de1985fbacb940296f3",
+    "name": "Mainboard MSI MEG Z890 ACE (DDR5) Chuyên Game AAA",
+    "category": "Mainboard",
+    "price": 22590000,
+    "brand": "MSI",
+    "specs": {
+      "fpsGeneric": "Z890",
+      "score": "ATX (tiêu chuẩn)",
+      "v3": "LGA 1851"
+    },
+    "description": "Hỗ trợ Bộ xử lý Intel® Core™ Ultra (Dòng 2), LGA 1851. 4x DDR5 UDIMM, Dung lượng bộ nhớ tối đa 256GB."
+  },
+  {
+    "id": "69b5204c985fbacb94029afa",
+    "name": "Mainboard ASUS ROG Strix B850-F Gaming Wifi",
+    "category": "Mainboard",
+    "price": 9690000,
+    "brand": "ASUS",
+    "specs": {
+      "fpsGeneric": "B850",
+      "score": "EATX",
+      "v3": "AMD AM5"
+    },
+    "description": "ASUS ROG Strix B880-F Gaming WiFi được xây dựng trên chipset AMD B880 và socket AM5, tối ưu cho các CPU AMD Ryzen™ thế hệ mới nhất."
+  },
+  {
+    "id": "69b52392985fbacb9402a0db",
+    "name": "Mainboard MSI MPG X870E CARBON WIFI (DDR5)",
+    "category": "Mainboard",
+    "price": 15990000,
+    "brand": "MSI",
+    "specs": {
+      "fpsGeneric": "X870E",
+      "score": "ATX (tiêu chuẩn)",
+      "v3": "AMD AM5"
+    },
+    "description": "Hỗ trợ Bộ xử lý máy tính để bàn AMD Ryzen™ 9000/ 8000/ 7000\nSeries Socket AM5"
+  },
+  {
+    "id": "69b52644985fbacb9402a627",
+    "name": "Bàn Phím Cơ Cooler Master MK770 Hybrid Wireless RGB Space Grey",
+    "category": "Bàn phím cơ",
+    "price": 2590000,
+    "brand": "COOLER MASTER",
+    "specs": {
+      "fpsGeneric": "brown switch",
+      "score": "đa kết nối",
+      "v3": "75%"
+    },
+    "description": "Bàn phím cơ Cooler Master MK770 Hybrid Wireless RGB Space Grey sự kết hợp hoàn hảo phụ vụ cho nhu cầu kết nối có dây và không dây, đảm bảo đáp ứng mới nhu cầu làm việc và chơi game."
+  },
+  {
+    "id": "69b528e6985fbacb9402aee4",
+    "name": "Bàn Phím Cơ Razer BlackWidow V4 X Green Switch",
+    "category": "Bàn phím cơ",
+    "price": 2850000,
+    "brand": "RAZER",
+    "specs": {
+      "fpsGeneric": "Clicky",
+      "score": "Có dây",
+      "v3": "Full-size"
+    },
+    "description": "Bàn phím Razer BlackWidow V4 X Green Switch dòng bàn phím cơ sở hữu thiết kế độc đáo, hệ thống led RGB sinh động mà người chơi có thể dễ dàng đồng bộ ánh sáng cùng các phụ kiện gaming gear khác tạo nê"
+  },
+  {
+    "id": "69b52bdf985fbacb9402b208",
+    "name": "Bàn Phím Cơ Logitech G Pro X TKL Light Speed Tactile Switch Black",
+    "category": "Bàn phím cơ",
+    "price": 4050000,
+    "brand": "Logitech",
+    "specs": {
+      "fpsGeneric": "GX Tactile",
+      "score": "đa kết nối",
+      "v3": "TKL"
+    },
+    "description": "Logitech G Pro X TKL Lightspeed Tactile Switch Black là bàn phím cơ gaming cao cấp thuộc dòng PRO của Logitech, được thiết kế dành cho game thủ esports và những người yêu cầu hiệu năng không dây ổn đị"
+  },
+  {
+    "id": "69b52e64985fbacb9402b492",
+    "name": "Bàn Phím Cơ DareU EK75 Full White Dream switch",
+    "category": "Bàn phím cơ",
+    "price": 530000,
+    "brand": "DAREU",
+    "specs": {
+      "fpsGeneric": "Dream Switch",
+      "score": "có dây",
+      "v3": "75%"
+    },
+    "description": "Bàn phím cơ DareU EK75 có thiết kế 75% gọn gàng, giúp tiết kiệm không gian trên bàn làm việc của bạn. Với màu trắng tinh khiết kết hợp cùng dải LED RGB hai bên, bàn phím này không chỉ đẹp mắt mà còn t"
+  },
+  {
+    "id": "69b5306b985fbacb9402b8ec",
+    "name": "Bàn Phím Cơ Logitech G715 TKL Off White Linear ",
+    "category": "Bàn phím cơ",
+    "price": 3850000,
+    "brand": "Logitech",
+    "specs": {
+      "fpsGeneric": "GX Linear",
+      "score": "đa kết nối",
+      "v3": "TKL"
+    },
+    "description": "G715 TKL phối màu Off White là một trong những dòng bàn phím cơ mới nhất trong series Aurora từ Logitech."
+  },
+  {
+    "id": "69b5340b985fbacb9402be35",
+    "name": "Chuột Gaming Rapoo VT3S Wireless 8K White",
+    "category": "Chuột Gaming",
+    "price": 1090000,
+    "brand": "RAPOO",
+    "specs": {
+      "fpsGeneric": "26000 DPI",
+      "score": "không dây",
+      "v3": "8000 Hz"
+    },
+    "description": "Rapoo VT3S là chuột gaming không dây siêu nhẹ chỉ khoảng 49g, mang lại cảm giác di chuyển cực kỳ nhanh và linh hoạt."
+  },
+  {
+    "id": "69b5477e985fbacb9402c1b2",
+    "name": "Chuột Gaming Razer Viper V3 Pro SE Không Dây",
+    "category": "Chuột Gaming",
+    "price": 2590000,
+    "brand": "RAZER",
+    "specs": {
+      "fpsGeneric": "30000 DPI",
+      "score": "Đa kết nối",
+      "v3": "1000 Hz"
+    },
+    "description": "Razer Viper V3 Pro SE là chuột gaming không dây đỉnh cao chỉ nặng 54g, mang lại khả năng kiểm soát tuyệt vời và cầm nắm thoải mái cho mọi game thủ."
+  },
+  {
+    "id": "69b54941985fbacb9402c41c",
+    "name": "Chuột Gaming Logitech G502 X Plus LightSpeed Black",
+    "category": "Chuột Gaming",
+    "price": 3100000,
+    "brand": "Logitech",
+    "specs": {
+      "fpsGeneric": "25000 DPI",
+      "score": "Không dây",
+      "v3": "1000 Hz"
+    },
+    "description": "Được thiết kế lại và cải tiến với công nghệ chơi game hiện đại, bao gồm công tắc Lightforce lai quang học - cơ học đầu tiên, Lightspeed không dây, LIGHT SYNC RGB và cảm biến quang học Hero 25K."
+  },
+  {
+    "id": "69b54b63985fbacb9402c6a6",
+    "name": "Chuột DareU EM901X RGB Superlight Wireless Pink",
+    "category": "Chuột Gaming",
+    "price": 680000,
+    "brand": "DAREU",
+    "specs": {
+      "fpsGeneric": "11000 DPI",
+      "score": "Không dây",
+      "v3": "8000Hz"
+    },
+    "description": "Chuột DareU EM901X RGB Superlight là mẫu chuột gaming không dây được tích hợp đầy đủ mọi phụ kiện như dock sạc cao cấp, tiện lợi."
+  },
+  {
+    "id": "69b54d0d985fbacb9402ccf2",
+    "name": "Chuột Gaming Razer Basilisk V3 Pro 35K White",
+    "category": "Chuột Gaming",
+    "price": 4190000,
+    "brand": "RAZER",
+    "specs": {
+      "fpsGeneric": "6500 DPI",
+      "score": "không dây",
+      "v3": "8000 Hz"
+    },
+    "description": "Nâng tầm trải nghiệm chơi game với Razer Basilisk V3 Pro 35K – chuột máy tính không dây RGB công thái học với khả năng tùy chỉnh và công nghệ tiên tiến nhất."
+  },
+  {
+    "id": "69b551e6985fbacb9402d06b",
+    "name": "Chip CPU Intel Core i3 14100 / 4 Nhân 8 Luồng / 12MB / LGA 1700",
+    "category": "Chip CPU",
+    "price": 3890000,
+    "brand": "INTEL",
+    "specs": {
+      "fpsGeneric": "Core i3 14100",
+      "score": "4 Nhân 8 Luồng",
+      "v3": "LGA 1700"
+    },
+    "description": "Bộ xử lý này sở hữu 4 nhân hiệu năng cao (P-cores) và 8 luồng, với xung nhịp cơ bản 3.5GHz và Turbo Boost tối đa lên đến 4.7GHz, mang lại hiệu suất ổn định cho các tác vụ như làm việc văn phòng, học t"
+  },
+  {
+    "id": "69b5549f985fbacb9402d288",
+    "name": "Chip CPU Intel Core i5 14400F / 10 Nhân 16 Luồng / 20MB / LGA 1700",
+    "category": "Chip CPU",
+    "price": 5390000,
+    "brand": "INTEL",
+    "specs": {
+      "fpsGeneric": "Core i5 14400F",
+      "score": "10 Nhân 16 Luồng",
+      "v3": "LGA 1700"
+    },
+    "description": "Bộ xử lý này sở hữu 10 nhân 16 luồng, bao gồm 6 nhân hiệu năng cao (P-cores) và 4 nhân tiết kiệm điện (E-cores), giúp xử lý tốt cả tác vụ đơn luồng lẫn đa nhiệm."
+  },
+  {
+    "id": "69b55722985fbacb9402d4c1",
+    "name": "Chip CPU Intel Core i7 14700F / 20 Nhân 28 Luồng / 33MB / LGA 1700",
+    "category": "Chip CPU",
+    "price": 10290000,
+    "brand": "INTEL",
+    "specs": {
+      "fpsGeneric": "Core i7 14700F",
+      "score": "20 Nhân 28 Luồng",
+      "v3": "LGA 1700"
+    },
+    "description": "Bộ xử lý sở hữu 20 nhân 28 luồng, gồm 8 nhân hiệu năng cao (P-cores) và 12 nhân tiết kiệm điện (E-cores), mang lại khả năng xử lý đa nhiệm mạnh mẽ."
+  },
+  {
+    "id": "69b79183f03eac6e5a9ffdcc",
+    "name": "Chip CPU Intel Core i9 14900F / 24 Nhân 32 Luồng / 36MB / LGA 1700",
+    "category": "Chip CPU",
+    "price": 14990000,
+    "brand": "INTEL",
+    "specs": {
+      "fpsGeneric": "Core i9 14900F",
+      "score": "24 Nhân 32 Luồng",
+      "v3": "LGA 1700"
+    },
+    "description": "Bộ xử lý sở hữu 24 nhân 32 luồng, bao gồm 8 nhân hiệu năng cao (P-cores) và 16 nhân tiết kiệm điện (E-cores), giúp xử lý đa nhiệm cực kỳ mạnh mẽ."
+  },
+  {
+    "id": "69b79337f03eac6e5a9fff88",
+    "name": "Chip CPU Intel Core i3 12100 / 4 Nhân 8 Luồng / 12MB / LGA 1700",
+    "category": "Chip CPU",
+    "price": 3390000,
+    "brand": "INTEL",
+    "specs": {
+      "fpsGeneric": "i3 12100",
+      "score": "4 Nhân 8 Luồng",
+      "v3": "LGA 1700"
+    },
+    "description": "CPU Intel Core i3 12100 là một trong những CPU gen 12th đầu tiên trong dòng Alder Lake-S. Intel Core i3 12100 hỗ trợ khe cắm LGA 1700 với kiến trúc hoàn toàn mới hứa hẹn đem đến trải nghiệm siêu mượt."
+  },
+  {
+    "id": "69b794def03eac6e5aa00148",
+    "name": "Chip CPU Intel Core i5 14600K / 14 Nhân 20 Luồng / 24MB / LGA 1700",
+    "category": "Chip CPU",
+    "price": 6690000,
+    "brand": "INTEL",
+    "specs": {
+      "fpsGeneric": "Core i5 14600K",
+      "score": "14 Nhân 20 Luồng",
+      "v3": "LGA 1700"
+    },
+    "description": "Intel Core i5 14600K có tổng cộng 14 lõi 20 luồng, bao gồm 6 lõi P-core và 8 lõi E-core. Số lượng P-Core và E-core không có gì thay đổi so với Intel gen 13."
+  },
+  {
+    "id": "69b79723f03eac6e5aa003e3",
+    "name": "Chip CPU Intel Core i7 10700K | LGA 1200, 8 nhân/16 luồng, Max 5.1 GHz",
+    "category": "Chip CPU",
+    "price": 6540000,
+    "brand": "INTEL",
+    "specs": {
+      "fpsGeneric": "Core i7 10700K",
+      "score": "8 nhân 16 luồng",
+      "v3": "LGA 1200"
+    },
+    "description": "Dòng CPU core i7 thế hệ 10 với tên gọi Intel Core I7-10700K, Intel Comet Lake S là thế hệ CPU Intel Core i thế hệ 10 với các cải tiến chủ yếu ở nâng số nhân/số luồng so với thế hệ cũ, cũng như tăng mứ"
+  },
+  {
+    "id": "69b79ad3f03eac6e5aa008bd",
+    "name": "Chip CPU Intel Core i9 9940X | LGA 2066, 14 nhân/28 luồng, Max 4.5 GHz",
+    "category": "Chip CPU",
+    "price": 12990000,
+    "brand": "INTEL",
+    "specs": {
+      "fpsGeneric": "Core i9 9940X",
+      "score": "14 nhân 28 luồng",
+      "v3": "LGA 2066"
+    },
+    "description": "Core i9-9940X có 19,25 MB bộ nhớ đệm L3 và hoạt động ở tốc độ 3,3 GHz theo mặc định, nhưng có thể tăng lên đến 4,5 GHz, tùy thuộc vào khối lượng công việc. "
+  },
+  {
+    "id": "69b79c3df03eac6e5aa00db6",
+    "name": "Chip CPU AMD Ryzen 9 9900X | AM5, 12 nhân/24 luồng, Max 5.6 GHz",
+    "category": "Chip CPU",
+    "price": 11990000,
+    "brand": "AMD",
+    "specs": {
+      "fpsGeneric": "Ryzen 9 9900X",
+      "score": "12 nhân 24 luồng",
+      "v3": "AMD5"
+    },
+    "description": "Trang bị 12 nhân, 24 luồng với tốc độ xung nhịp tối đa lên đến 5.6 GHz, mang lại hiệu năng vượt trội.\nSản xuất trên tiến trình 4nm FinFET tiên tiến, giúp cải thiện hiệu suất và tiết kiệm năng lượng.\nT"
+  },
+  {
+    "id": "69b79dc6f03eac6e5aa0110c",
+    "name": "Chip CPU AMD Ryzen 5 7600 / 6 nhân 12 luồng / 38MB / AM5",
+    "category": "Chip CPU",
+    "price": 5790000,
+    "brand": "AMD",
+    "specs": {
+      "fpsGeneric": "Ryzen 5 7600",
+      "score": "6 nhân 12 luồng",
+      "v3": "AMD5"
+    },
+    "description": "Hoàn thiện dựa trên nền tảng kiến trúc tiên tiến, AMD Ryzen 5 7600 sở hữu cho mình 6 nhân 12 luồng mang lại xung nhịp tối đa lên đến 5.1GHz. Điều này mang lại cho CPU AMD tốc độ xử lý tác vụ mạnh mẽ v"
+  },
+  {
+    "id": "69b7a8e0f03eac6e5aa01aac",
+    "name": "Ram PC Adata XPG D35 16GB DDR4 3200MHz C16 Black",
+    "category": "RAM",
+    "price": 3690000,
+    "brand": "XPG",
+    "specs": {
+      "fpsGeneric": "16GB",
+      "score": "3200 MHz",
+      "v3": "DDR4"
+    },
+    "description": "Sản phẩm sử dụng chuẩn DDR4, dung lượng 16GB và tốc độ 3200MHz, mang lại khả năng xử lý dữ liệu nhanh và ổn định cho các tác vụ chơi game, làm việc đa nhiệm hoặc chỉnh sửa nội dung."
+  },
+  {
+    "id": "69b7ab07f03eac6e5aa01c36",
+    "name": "RAM PC ADATA XPG Spectrix D50 16GB RGB DDR4 3200MHz White",
+    "category": "RAM",
+    "price": 3890000,
+    "brand": "XPG",
+    "specs": {
+      "fpsGeneric": "16GB",
+      "score": "3200Mhz",
+      "v3": "DDR4"
+    },
+    "description": "RAM DDR4 16GB tốc độ 3200Mhz và độ trễ CL16, mang đến hiệu năng mạnh mẽ, xử lý đa nhiệm mượt mà, tăng cường khả năng chơi game, thiết kế đồ họa."
+  },
+  {
+    "id": "69b7acb6f03eac6e5aa01e40",
+    "name": "RAM PC Corsair Vengeance LPX 16GB DDR4 3200MHz Black",
+    "category": "RAM",
+    "price": 3560000,
+    "brand": "CORSAIR",
+    "specs": {
+      "fpsGeneric": "16GB",
+      "score": "3200MHz",
+      "v3": "DDR4"
+    },
+    "description": "RAM DDR4 với tốc độ 3200Mhz, mang đến hiệu suất vượt trội, xử lý đa nhiệm mượt mà, tăng cường khả năng chơi game, thiết kế đồ họa."
+  },
+  {
+    "id": "69b7adc6f03eac6e5aa01f78",
+    "name": "RAM PC Kingston Fury Beast 8GB DDR4 3200MHz BK",
+    "category": "RAM",
+    "price": 1990000,
+    "brand": "KINGSTON",
+    "specs": {
+      "fpsGeneric": "8GB",
+      "score": "3200MHz",
+      "v3": "DDR4"
+    },
+    "description": "RAM PC DDR4 với tốc độ 3200Mhz, xử lý đồ họa, chơi game mượt mà, tốc độ phản hồi nhanh chóng.\nDung lượng 8GB đáp ứng nhu cầu sử dụng phổ biến, phù hợp với đa số PC hiện nay."
+  },
+  {
+    "id": "69b7b051f03eac6e5aa020b7",
+    "name": "RAM PC Kingston Fury Beast 16GB RGB DDR5 6000MHz",
+    "category": "RAM",
+    "price": 7399000,
+    "brand": "KINGSTON",
+    "specs": {
+      "fpsGeneric": "16GB",
+      "score": "6000MHz",
+      "v3": "DDR5"
+    },
+    "description": "Kingston KF560C36BBE2A-16WP mang đến tốc độ bus lên đến 6000MT/s, đáp ứng hoàn hảo cho các tác vụ đòi hỏi hiệu suất cao như chơi game AAA, dựng video 4K, lập trình hay giả lập."
+  },
+  {
+    "id": "69b7b4e8f03eac6e5aa023c2",
+    "name": "RAM PC Kingmax Archon X 32GB DDR5 | (2x16GB), 6000MHz",
+    "category": "RAM",
+    "price": 11999000,
+    "brand": "KINGMAX",
+    "specs": {
+      "fpsGeneric": "32GB",
+      "score": "6000MHz",
+      "v3": "DDR5"
+    },
+    "description": "RAM Kingmax Archon X RGB đạt tốc độ bus lên đến 6000MHz, mang lại tốc độ xử lý dữ liệu cực nhanh, thích hợp cho các hệ thống yêu cầu cao như gaming, render video hay làm việc với phần mềm chuyên sâu."
+  },
+  {
+    "id": "69b7b643f03eac6e5aa024b5",
+    "name": "RAM PC Kingmax Zeus Dragon 8GB RGB DDR4 | (1x8GB), 3600MHz",
+    "category": "RAM",
+    "price": 1950000,
+    "brand": "KINGMAX",
+    "specs": {
+      "fpsGeneric": "8GB",
+      "score": "3600MHz",
+      "v3": "DDR4"
+    },
+    "description": "Ram Kingmax Zeus Dragon được sản xuất theo tiêu chuẩn JEDEC, sử dụng các IC chất lượng cao đã qua kiểm tra nghiêm ngặt, đảm bảo độ ổn định và tương thích tối đa với các dòng mainboard phổ biến hiện na"
+  },
+  {
+    "id": "69b7b999f03eac6e5aa025d1",
+    "name": "RAM PC Patriot Viper Elite 5 32GB RGB DDR5 | (1x32GB), 5600MHz",
+    "category": "RAM",
+    "price": 11799000,
+    "brand": "PATRIOT",
+    "specs": {
+      "fpsGeneric": "32GB",
+      "score": "5600MHz",
+      "v3": "DDR5"
+    },
+    "description": "RAM hỗ trợ tốc độ từ 4800MT/s đến hơn 6000MT/s (thậm chí tới 7000MT/s tùy phiên bản) cùng độ trễ thấp, giúp cải thiện hiệu năng khi chơi game, render video hoặc chạy các phần mềm nặng."
+  },
+  {
+    "id": "69b7c6f1f03eac6e5aa0282a",
+    "name": "Ổ cứng SSD Patriot P210 256GB | SATA III, 2.5\" (P210S256G25)",
+    "category": "Ổ Cứng",
+    "price": 1090000,
+    "brand": "PATRIOT",
+    "specs": {
+      "fpsGeneric": "256GB",
+      "score": "SATA 3",
+      "v3": "500MB/s"
+    },
+    "description": "Dung lượng 256GB, phù hợp cho nhu cầu sử dụng cơ bản / Tốc độ đọc 500MB/s, tốc độ ghi 400MB/s, khởi động máy tính và ứng dụng nhanh hơn."
+  },
+  {
+    "id": "69b7ca16f03eac6e5aa0292d",
+    "name": "Ổ cứng SSD Patriot P300 256GB | PCIe Gen3 x4 NVMe, M.2 2280",
+    "category": "Ổ Cứng",
+    "price": 1450000,
+    "brand": "PATRIOT",
+    "specs": {
+      "fpsGeneric": "256GB",
+      "score": "M.2 NVMe Gen3",
+      "v3": "1700 MB/s"
+    },
+    "description": "Tốc độ đọc/ghi nhanh với giao tiếp PCIe Gen3 x4 / Kích thước nhỏ gọn, dễ dàng lắp đặt / Dung lượng 256GB, đáp ứng nhu cầu cơ bản."
+  },
+  {
+    "id": "69b7cc01f03eac6e5aa02b35",
+    "name": "Ổ cứng SSD Corsair MP600 CORE XT 1TB | PCIe Gen4 x4 NVMe, M.2 2280",
+    "category": "Ổ Cứng",
+    "price": 4690000,
+    "brand": "CORSAIR",
+    "specs": {
+      "fpsGeneric": "1TB",
+      "score": " M.2 NVMe Gen4",
+      "v3": "5000MB/s"
+    },
+    "description": "MP600 CORE XT sử dụng giao tiếp PCIe Gen4 x4 cho tốc độ truyền dữ liệu vượt trội so với thế hệ trước. Đây là giải pháp nâng cấp lý tưởng cho game thủ, dân thiết kế đồ họa hoặc người làm việc với dữ li"
+  },
+  {
+    "id": "69b7cf95f03eac6e5aa02c48",
+    "name": "Ổ cứng SSD Kingston A400 480GB | SATA III, 2.5\" (SA400S37/480G)",
+    "category": "Ổ Cứng",
+    "price": 3150000,
+    "brand": "KINGSTON",
+    "specs": {
+      "fpsGeneric": "480GB",
+      "score": "sata 3",
+      "v3": "500MB/s"
+    },
+    "description": "Được hỗ trợ bởi thế hệ bộ điều khiển mới nhất cho tốc độ đọc và ghi lên đến 500MB / giây và 450MB / giây, ổ SSD này nhanh hơn 10 lần so với một ổ cứng truyền thống mang lại hiệu năng cao hơn, khả năng"
+  },
+  {
+    "id": "69b7d11af03eac6e5aa02d4c",
+    "name": "Ổ cứng SSD Kingston NV3 500GB | PCIe Gen4 x4 NVMe, M.2 2280",
+    "category": "Ổ Cứng",
+    "price": 3090000,
+    "brand": "KINGSTON",
+    "specs": {
+      "fpsGeneric": "500GB",
+      "score": "M.2 NVMe Gen4",
+      "v3": "5000MB/s"
+    },
+    "description": "SSD Kingston NV3 500GB là ổ cứng thể rắn chuẩn M.2 2280 NVMe PCIe Gen4 x4, được thiết kế dành cho PC và laptop cần tốc độ truy xuất dữ liệu nhanh và ổn định."
+  },
+  {
+    "id": "69b7df1ef03eac6e5aa03209",
+    "name": "Ổ cứng SSD Samsung 9100 PRO 2TB | PCIe Gen5 x4 NVMe, M.2 2280",
+    "category": "Ổ Cứng",
+    "price": 14990000,
+    "brand": "SAMSUNG",
+    "specs": {
+      "fpsGeneric": "2TB",
+      "score": "M.2 NVMe Gen5",
+      "v3": "14700MB/s"
+    },
+    "description": "Sở hữu tốc độ đọc tuần tự lên đến 14.700 MB/s và tốc độ ghi lên đến 13.400 MB/s, Samsung 9100 Pro thực sự là cỗ máy tối ưu tốc độ. Dù bạn chơi game AAA, dựng video 4K hay xử lý hàng trăm GB dữ liệu mỗ"
+  },
+  {
+    "id": "69b7e0d1f03eac6e5aa03328",
+    "name": "Ổ cứng SSD Samsung 980 500GB | PCIe Gen3 x4 NVMe, M.2 2280",
+    "category": "Ổ Cứng",
+    "price": 3750000,
+    "brand": "SAMSUNG",
+    "specs": {
+      "fpsGeneric": "500GB",
+      "score": "M.2 NVMe gen3",
+      "v3": "3100MB/s"
+    },
+    "description": "Đã đến lúc để tối đa hóa tiềm năng của PC với 980. Cho dù bạn cần tăng tốc để chơi game hay quy trình làm việc liền mạch cho đồ họa nặng, 980 là sự lựa chọn thông minh cho hiệu suất SSD vượt trội và t"
+  },
+  {
+    "id": "69b7e52df03eac6e5aa035db",
+    "name": "Ổ Cứng SSD Adata Legend 860 1TB | PCIe Gen4 x4 NVMe, M.2 2280",
+    "category": "Ổ Cứng",
+    "price": 3999999,
+    "brand": "ADATA",
+    "specs": {
+      "fpsGeneric": "1TB",
+      "score": "M.2 NVMe gen4",
+      "v3": "6000MB/s"
+    },
+    "description": "SSD Adata Legend 860 sử dụng giao diện PCIe Gen4 x4 mang lại tốc độ đọc tuần tự lên tới 6.000MB/giây và tốc độ ghi lên tới 5.000MB/giây."
+  },
+  {
+    "id": "69b7ea27f03eac6e5aa03aec",
+    "name": "Nguồn Máy Tính COOLER MASTER Elite Nex N500 500W | Non Modular, ATX",
+    "category": "Nguồn Máy Tính",
+    "price": 599000,
+    "brand": "COOLER MASTER",
+    "specs": {
+      "fpsGeneric": "500W",
+      "score": "80 Plus",
+      "v3": "Non-Modular"
+    },
+    "description": "Nguồn được trang bị chuẩn ATX 12V Ver. 2.41 và công nghệ Active PFC, giúp cải thiện hiệu suất chuyển đổi điện năng, hạn chế hao phí. Cooler Master Elite NEX N500 đạt hiệu suất ≥75% tại mức tải tiêu ch"
+  },
+  {
+    "id": "69b7f53bf03eac6e5aa03fdc",
+    "name": "Nguồn máy tính THERMALRIGHT TB-550S 550W 80 Plus Bronze, ATX",
+    "category": "Nguồn Máy Tính",
+    "price": 859000,
+    "brand": "THERMALRIGHT",
+    "specs": {
+      "fpsGeneric": "550W",
+      "score": "80 Plus Bronze",
+      "v3": "Non-Modular / Semi-Modular"
+    },
+    "description": "Với công suất 550W, sản phẩm cung cấp nguồn điện ổn định cho hệ thống sử dụng CPU và GPU phổ thông, phù hợp cho các bộ PC văn phòng, gaming entry-level hoặc cấu hình tầm trung."
+  },
+  {
+    "id": "69b8e147e27107caec22c927",
+    "name": "Nguồn Máy Tính THERMALTAKE Litepower 650W | Non Modular, ATX",
+    "category": "Nguồn Máy Tính",
+    "price": 990000,
+    "brand": "THERMALTAKE",
+    "specs": {
+      "fpsGeneric": "650W",
+      "score": "80 Plus",
+      "v3": "Non-Modular"
+    },
+    "description": "Nguồn được trang bị Active PFC và đường điện +12V mạnh, giúp cung cấp điện ổn định cho các linh kiện như CPU và card đồ họa. Ngoài ra, sản phẩm có 2 đầu PCIe 6+2 pin, hỗ trợ các GPU rời phổ biến."
+  },
+  {
+    "id": "69b8e353e27107caec22ca8b",
+    "name": "Nguồn Máy Tính THERMALRIGHT SFX TGFX Black 750W 80 Plus Gold | Full Modular, SFX",
+    "category": "Nguồn Máy Tính",
+    "price": 1899000,
+    "brand": "THERMALRIGHT",
+    "specs": {
+      "fpsGeneric": "750W",
+      "score": "80 Plus Gold",
+      "v3": "Full-Modular"
+    },
+    "description": "Bộ nguồn Thermalright SFX TGFX 750W đạt chuẩn hiệu suất 80 Plus Gold, đảm bảo khả năng tiết kiệm điện năng và vận hành ổn định. Với công suất 750W, sản phẩm hỗ trợ tối đa cho các hệ thống PC cao cấp s"
+  },
+  {
+    "id": "69b8e529e27107caec22cbf4",
+    "name": "Nguồn Máy Tính COOLER MASTER Elite Nex N600 600W | Non Modular, ATX",
+    "category": "Nguồn Máy Tính",
+    "price": 810000,
+    "brand": "COOLER MASTER",
+    "specs": {
+      "fpsGeneric": "600W",
+      "score": "80 PLUS Bronze",
+      "v3": "Non-Modular"
+    },
+    "description": "Công nghệ Active PFC: Tối ưu hóa hiệu suất nguồn, giảm hao phí điện năng.\nThiết kế Dual Forward Topology: Đảm bảo ổn định, tối ưu hóa nguồn điện cung cấp."
+  },
+  {
+    "id": "69b913e4e27107caec22dbae",
+    "name": "Nguồn Máy Tính CORSAIR RM850E 850W 80 Plus Gold | Full Modular, ATX",
+    "category": "Nguồn Máy Tính",
+    "price": 2799000,
+    "brand": "CORSAIR",
+    "specs": {
+      "fpsGeneric": "850W",
+      "score": "80 Plus Gold",
+      "v3": "Full-Modular"
+    },
+    "description": "Nguồn máy tính là một trong những thành phần quan trọng quyết định hiệu suất và độ bền của hệ thống PC. Corsair RM850E ATX 3.1 PCIe 5.1 với công suất 850W, chứng nhận 80 Plus Gold, thiết kế Full Modul"
+  },
+  {
+    "id": "69b917fbe27107caec22de95",
+    "name": "Nguồn Máy Tính COOLER MASTER G700 Gold 700W 80 Plus Gold | Non Modular, ATX",
+    "category": "Nguồn Máy Tính",
+    "price": 1699000,
+    "brand": "COOLER MASTER",
+    "specs": {
+      "fpsGeneric": "700W",
+      "score": "80 Plus Gold",
+      "v3": "Non-Modular"
+    },
+    "description": "Cooler Master G700 Gold (MPW-7001-ACAAG) là một nguồn điện đáng tin cậy và hiệu quả cho các hệ thống máy tính tầm trung và cao cấp. Với hiệu suất 80 PLUS Gold, bảo hành 5 năm và giá cả hợp lý, đây là "
+  },
+  {
+    "id": "69b91b8ae27107caec22e0cf",
+    "name": "Nguồn Máy Tính ANTEC CSK1000 PRO EC 1000W 80 Plus Bronze | Non Modular, ATX",
+    "category": "Nguồn Máy Tính",
+    "price": 2599000,
+    "brand": "ANTEC",
+    "specs": {
+      "fpsGeneric": "1000W",
+      "score": "80 PLUS Bronze",
+      "v3": "Semi-Modular"
+    },
+    "description": "Với công suất 1000W, PSU đáp ứng tốt các cấu hình sử dụng CPU hiệu năng cao và GPU mạnh như RTX 40 series. Hiệu suất đạt chuẩn 80 Plus Bronze (~85–90%), giúp tiết kiệm điện và giảm nhiệt trong quá trì"
+  },
+  {
+    "id": "69b92040e27107caec22ea74",
+    "name": "Thùng máy Xigmatek Gaming X II 3F - Black | Kèm sẵn 3 fan RGB Fixed",
+    "category": "Case PC",
+    "price": 739000,
+    "brand": "XIGMATEK",
+    "specs": {
+      "fpsGeneric": "E-ATX / ATX / Micro-ATX / ITX",
+      "score": "1 mặt kính",
+      "v3": "sẵn 3 fan"
+    },
+    "description": "Thùng máy Case Xigmatek Gaming X II 3F - Black là một trong những sản phẩm nổi bật của hãng Xigmatek, được thiết kế đặc biệt dành cho các game thủ và người dùng yêu thích sự mạnh mẽ, hiện đại."
+  },
+  {
+    "id": "69b9228fe27107caec22ec02",
+    "name": "Thùng Máy Cooler Master Elite 301 Lite - Trắng | Sẵn 1 fan",
+    "category": "Case PC",
+    "price": 649000,
+    "brand": "COOLER MASTER",
+    "specs": {
+      "fpsGeneric": "ITX / Micro-ATX",
+      "score": "1 mặt kính",
+      "v3": "sẵn 1 fan"
+    },
+    "description": "Cooler Master Elite 301 Lite (Trắng | sẵn 1 fan) là mẫu case mini tower nhỏ gọn, hướng đến các cấu hình PC gaming và làm việc tầm trung với mức giá dễ tiếp cận."
+  },
+  {
+    "id": "69b93fbbe27107caec22f0ce",
+    "name": "Thùng máy ASUS A21 Mesh - Đen | AIO 360 Top, Micro ATX, không fan",
+    "category": "Case PC",
+    "price": 1259000,
+    "brand": "ASUS",
+    "specs": {
+      "fpsGeneric": "Micro-ATX / M-ITX",
+      "score": "1 mặt kính",
+      "v3": "không fan"
+    },
+    "description": "Khả năng tương thích rộng: A21 hỗ trợ bộ tản nhiệt lên đến 360 mm, card đồ họa có chiều dài lên đến 380 mm và bộ tản nhiệt không khí cho CPU có chiều cao lên đến 165 mm."
+  },
+  {
+    "id": "69b9462ae27107caec22f259",
+    "name": "Thùng Máy Xigmatek Alphard ATX - Trắng | Kèm sẵn 3 fan (EN 43826)",
+    "category": "Case PC",
+    "price": 899000,
+    "brand": "XIGMATEK",
+    "specs": {
+      "fpsGeneric": "tất cả",
+      "score": "hồ cá",
+      "v3": "sẵn 3 fan"
+    },
+    "description": "Vật liệu: Steel\nKích thước: 425 x 212 x 490 mm\nHỗ trợ: 2.5 \"\" x 1 / 3.5\"\" x 1\nKhe mở rộng: 7 slots\nHỗ trợ Mainboard: E-ATX, ATX, Micro-ATX, ITX"
+  },
+  {
+    "id": "69b9fbe82fa7379a1c1dcfbe",
+    "name": "Thùng máy Jetek CSGO2 Z7 - Đen | E-ATX, kèm sẵn 3 fan RGB",
+    "category": "Case PC",
+    "price": 799000,
+    "brand": "JETEK",
+    "specs": {
+      "fpsGeneric": "ATX",
+      "score": "1 mặt kính",
+      "v3": "sẵn 3 fan"
+    },
+    "description": "Kiểu chuẩn: ATX\nHỗ trợ: 2.5\" HDD/SSD x 2 hoặc 2.5\" SSD x 3 + 3.5\" HDD x 1 hoặc 2.5\" SSD x 4"
+  },
+  {
+    "id": "69b9fe292fa7379a1c1dd12d",
+    "name": "Thùng máy E-Dra ECS 1503 - White | M ATX/ ITX",
+    "category": "Case PC",
+    "price": 489000,
+    "brand": "E-DRA",
+    "specs": {
+      "fpsGeneric": "Micro-ATX / ITX",
+      "score": "hồ cá",
+      "v3": "không fan"
+    },
+    "description": "Hỗ trợ nguồn: ATX\nCổng kết nối: USB 2.0*2, USB 3.0*1, cổng Audio, nút điều khiển chế độ LED\nHỗ trợ tản CPU có chiều cao lớn nhất 160mm"
+  },
+  {
+    "id": "69ba00022fa7379a1c1dd28f",
+    "name": "Thùng máy Jonsbo C6 Mini-ITX - Black | Có tay cầm",
+    "category": "Case PC",
+    "price": 899000,
+    "brand": "JONSBO",
+    "specs": {
+      "fpsGeneric": "ITX / M-DTX",
+      "score": "mini case",
+      "v3": "không fan"
+    },
+    "description": "Model：C6-ITX\nDimension：202mm(W) * 266mm(D) * 295.2mm(H)\nDrive Bay：2.5SSD*1 / 3.5HDD*1\nMotherboard：ITX / MINI-DTX\nFront I/O Port：Type-C(20PIN)/USB3.0*1/AUDIO*1+MIC*1"
+  },
+  {
+    "id": "69ba03302fa7379a1c1dd5df",
+    "name": "Thùng máy Corsair 3500X | Black, Mid Tower (CC-9011276-WW)",
+    "category": "Case PC",
+    "price": 1849000,
+    "brand": "CORSAIR",
+    "specs": {
+      "fpsGeneric": "tất cả",
+      "score": "hồ cá",
+      "v3": "Không fan"
+    },
+    "description": "Hãng sản xuất: Corsair\nMã sản phẩm:CC-9011276-WW\nBảo hành: 24 tháng"
+  },
+  {
+    "id": "69ba09172fa7379a1c1dd788",
+    "name": "Tản nhiệt khí Jonsbo CR-1200 | RGB, Đen",
+    "category": "Tản Nhiệt CPU",
+    "price": 189000,
+    "brand": "JONSBO",
+    "specs": {
+      "fpsGeneric": "tản khí",
+      "score": "92mm",
+      "v3": "95W"
+    },
+    "description": "Jonsbo CR-1200 là một giải pháp tản nhiệt khí hiệu quả, phù hợp cho các CPU Intel thế hệ mới với giá thành hợp lý, mang lại hiệu năng làm mát ấn tượng cho case máy tính. "
+  },
+  {
+    "id": "69ba0bc12fa7379a1c1de286",
+    "name": "Tản nhiệt khí Thermalright Phantom Spirit 120 SE Black | ARGB, Đen",
+    "category": "Tản Nhiệt CPU",
+    "price": 949000,
+    "brand": "THERMALRIGHT",
+    "specs": {
+      "fpsGeneric": "tản khí",
+      "score": "150mm",
+      "v3": "150W"
+    },
+    "description": "Dimension: 110 mm (length) x 125 mm (width) x 154 mm (height)\nWeight: 765 grams\nHeat pipes: 7 x 6 mm diameter heat pipes"
+  },
+  {
+    "id": "69ba0efa2fa7379a1c1de3d5",
+    "name": "Tản nhiệt khí Cooler Master Hyper 212 Spectrum V3 | RGB, Đen",
+    "category": "Tản Nhiệt CPU",
+    "price": 399000,
+    "brand": "COOLER MASTER",
+    "specs": {
+      "fpsGeneric": "tản khí",
+      "score": "79mm",
+      "v3": "150W"
+    },
+    "description": "Thương Hiệu: Coolmaster\nHỗ trợ Socket: LGA1700, LGA1200, LGA1151, LGA1150, LGA1155, LGA1156, AM5, AM4\nChiều cao tối đa: 120mm"
+  },
+  {
+    "id": "69ba10762fa7379a1c1de52e",
+    "name": "Tản nhiệt khí Jonsbo CR-1000 EVO | RGB, Trắng",
+    "category": "Tản Nhiệt CPU",
+    "price": 389000,
+    "brand": "JONSBO",
+    "specs": {
+      "fpsGeneric": "tản khí",
+      "score": "120mm",
+      "v3": "95W"
+    },
+    "description": "Jonsbo CR-1000 EVO RGB White là một tản nhiệt khí CPU cao cấp với hiệu năng tản nhiệt mạnh mẽ lên đến 220W, thiết kế tinh tế với màu trắng sang trọng và hiệu ứng RGB độc đáo, mang đến trải nghiệm sử d"
+  },
+  {
+    "id": "69ba13e32fa7379a1c1de692",
+    "name": "Tản nhiệt nước Thermalright Frozen Warframe 240 White | ARGB Display, Trắng",
+    "category": "Tản Nhiệt CPU",
+    "price": 1699000,
+    "brand": "THERMALRIGHT",
+    "specs": {
+      "fpsGeneric": "tản nước AIO",
+      "score": "120mm",
+      "v3": "250W"
+    },
+    "description": "Pump Dimensions：W69.2 mm x D69.2 mm x H60 mm\nPump Rated Speed：3000 RPM±10% (MAX)\nPump Noise Level：23 dBA(MAX)"
+  },
+  {
+    "id": "69ba16262fa7379a1c1de806",
+    "name": "Tản nhiệt nước Cooler Master MasterLiquid ML360L V2 White | ARGB, Trắng",
+    "category": "Tản Nhiệt CPU",
+    "price": 1899000,
+    "brand": "COOLER MASTER",
+    "specs": {
+      "fpsGeneric": "tản nước AIO",
+      "score": "120mm",
+      "v3": "360W"
+    },
+    "description": "Nâng cấp hệ thống của bạn với bộ pump thiết kế mới sử dụng chất liệu nhựa PPS (Polyphenylene sulfide) và sợi thuỷ tinh tăng cường bảo vệ từ nhiều loại hoá chất, độ ẩm hoặc nước."
+  },
+  {
+    "id": "69ba18492fa7379a1c1de984",
+    "name": "Tản nhiệt nước Thermalright Frozen Warframe 360 SE | ARGB Display, Đen",
+    "category": "Tản Nhiệt CPU",
+    "price": 1749000,
+    "brand": "THERMALRIGHT",
+    "specs": {
+      "fpsGeneric": "tản nước AIO",
+      "score": "120mm",
+      "v3": "360W"
+    },
+    "description": "Tản nhiệt nước Thermalright Frozen Warframe 360 SE ARGB Display – Hiệu suất mạnh mẽ, thiết kế ARGB ấn tượng."
+  },
+  {
+    "id": "69ba1d162fa7379a1c1deb13",
+    "name": "Tản nhiệt nước Xigmatek Alpha Connect 240 | ARGB, Đen",
+    "category": "Tản Nhiệt CPU",
+    "price": 2319000,
+    "brand": "XIGMATEK",
+    "specs": {
+      "fpsGeneric": "tản nước AIO",
+      "score": "120mm",
+      "v3": "240W"
+    },
+    "description": "Tản nhiệt nước Xigmatek Alpha Connect 240 ARGB - Black sở hữu thiết kế hiện đại, mạnh mẽ với màu đen chủ đạo. Điểm nhấn đặc biệt của sản phẩm nằm ở block CPU được trang bị màn hình LCD 3.4 inch."
+  },
+  {
+    "id": "69ba1fba2fa7379a1c1decb2",
+    "name": "Tản nhiệt nước ASUS ROG RYUJIN 240 | RGB Display, Đen",
+    "category": "Tản Nhiệt CPU",
+    "price": 4490000,
+    "brand": "ASUS",
+    "specs": {
+      "fpsGeneric": "tản nước AIO",
+      "score": "120mm",
+      "v3": "240W"
+    },
+    "description": "ROG Ryujin là hệ thống tản nhiệt CPU bằng chất lỏng tất cả trong một tốt nhất cho các giàn máy cấu hình khủng, được thiết kế để mang đến hiệu suất tản nhiệt tốt nhất."
+  },
+  {
+    "id": "69ba32122fa7379a1c1dee5e",
+    "name": "Tản nhiệt nước Thermalright Hyper Vision 360 UB | ARGB Display, Trắng",
+    "category": "Tản Nhiệt CPU",
+    "price": 3849000,
+    "brand": "THERMALRIGHT",
+    "specs": {
+      "fpsGeneric": "tản nước AIO",
+      "score": "120mm",
+      "v3": "360W"
+    },
+    "description": "Thermalright Hyper Vision 360 UB ARGB là giải pháp tản nhiệt nước cao cấp với thiết kế mạnh mẽ, khả năng làm mát tối ưu và hệ thống ARGB sống động."
+  },
+  {
+    "id": "69ba34512fa7379a1c1df4ea",
+    "name": "Tai nghe Gaming Dare-U EH416 7.1 | Có dây, Over Ear, RGB, Đen",
+    "category": "Tai Nghe",
+    "price": 349000,
+    "brand": "DAREU",
+    "specs": {
+      "fpsGeneric": "Jack 3.5mm",
+      "score": "OverEase",
+      "v3": "âm thanh 7.1"
+    },
+    "description": "Dare-U EH416 7.1 RGB là tai nghe gaming chuyên nghiệp với hiệu ứng âm thanh vòm 7.1 sống động, thiết kế độc đáo cùng đèn LED RGB ấn tượng, mang đến trải nghiệm chơi game đỉnh cao cho các game thủ."
+  },
+  {
+    "id": "69ba36992fa7379a1c1df6a1",
+    "name": "Tai nghe Gaming Rapoo VH500C | Có dây, Over-ear, RGB, Đen",
+    "category": "Tai Nghe",
+    "price": 399000,
+    "brand": "RAPOO",
+    "specs": {
+      "fpsGeneric": "Jack 3.5mm",
+      "score": "OverEase",
+      "v3": "âm thanh 7.1"
+    },
+    "description": "Tai nghe Rapoo VH500C Virtual 7.1 RGB với thiết kế hiện đại, âm thanh vòm 7.1 sống động, đèn LED RGB rực rỡ và micro thu âm rõ nét, mang đến trải nghiệm chơi game chuyên nghiệp và đầy đủ tính năng cho"
+  },
+  {
+    "id": "69ba38212fa7379a1c1df83a",
+    "name": "Tai nghe Gaming Logitech G335 | Có dây, On-Ear, Đen",
+    "category": "Tai Nghe",
+    "price": 1250000,
+    "brand": "LOGITECH",
+    "specs": {
+      "fpsGeneric": "Jack 3.5mm",
+      "score": "OnEase",
+      "v3": "LED RGB"
+    },
+    "description": "Tai nghe Logitech G335 thuộc dòng tai nghe gaming on-ear với thiết kế trẻ trung, màu sắc sang trọng, âm thanh chất lượng cao và khả năng tương thích rộng rãi, phù hợp cho nhiều game thủ."
+  },
+  {
+    "id": "69ba392f2fa7379a1c1df9b4",
+    "name": "Tai Nghe Gaming Dare-U EH469 7.1 RGB - Pink",
+    "category": "Tai Nghe",
+    "price": 385000,
+    "brand": "DAREU",
+    "specs": {
+      "fpsGeneric": "Jack 3.5mm",
+      "score": "OverEase",
+      "v3": "Led RGB"
+    },
+    "description": "Tai Nghe Gaming Dare-U EH469 7.1 RGB - Pink là tai nghe gaming không dây được thiết kế dành riêng cho các game thủ nữ, mang đến trải nghiệm âm thanh sống động, chân thực, đồng thời sở hữu phong cách n"
+  },
+  {
+    "id": "69ba3b252fa7379a1c1dfb21",
+    "name": "Tai nghe Logitech G PRO X 2 LIGHTSPEED White",
+    "category": "Tai Nghe",
+    "price": 4870000,
+    "brand": "LOGITECH",
+    "specs": {
+      "fpsGeneric": "Wireless",
+      "score": "OverEase",
+      "v3": "Khử ồn ENC"
+    },
+    "description": "Logitech G PRO X 2 LIGHTSPEED White dòng tai nghe chụp tai (Over-ear) sở hữu thiết kết vô cùng nhẹ nhàng, sang trọng. Đặc biệt, PRO X 2 LIGHTSPEED còn mang lại âm thanh vượt trội và vô cùng chuyên ngh"
+  },
+  {
+    "id": "69ba3d0d2fa7379a1c1dfd3a",
+    "name": "Quạt tản nhiệt PC Jonsbo ZA-120 | Fan lẻ 120mm, ARGB, Gió ngược, Trắng",
+    "category": "Fan Case",
+    "price": 329000,
+    "brand": "JONSBO",
+    "specs": {
+      "fpsGeneric": "120mm",
+      "score": "ARGB",
+      "v3": "gió ngược"
+    },
+    "description": "Fan Case Jonsbo ZA-120 ARGB sở hữu kích thước tiêu chuẩn 120mm x 120mm x 28mm, phù hợp với hầu hết các loại case hiện nay"
+  },
+  {
+    "id": "69ba41fd2fa7379a1c1e01fd",
+    "name": "Quạt tản nhiệt PC Coolmoon F3 | Fan lẻ 120mm, ARGB, Gió Xuôi, Trắng",
+    "category": "Fan Case",
+    "price": 115000,
+    "brand": "COOLMOON",
+    "specs": {
+      "fpsGeneric": "120mm",
+      "score": "ARGB",
+      "v3": "gió xuôi"
+    },
+    "description": "Heatsink Material Plastic\nFan Life 50000 Hrs\nAir Volume 45CFM\nNoise 15-20 dBA+10%"
+  },
+  {
+    "id": "69ba43752fa7379a1c1e0340",
+    "name": "Quạt tản nhiệt PC Coolmoon TY1 RGB | Fan lẻ 120mm, ARGB, Gió Xuôi, Trắng",
+    "category": "Fan Case",
+    "price": 89000,
+    "brand": "COOLMOON",
+    "specs": {
+      "fpsGeneric": "120mm",
+      "score": "ARGB",
+      "v3": "gió xuôi"
+    },
+    "description": "Fan Case LED ARGB Coolmoon TY1 là lựa chọn lý tưởng cho các bộ PC gaming và workstation yêu cầu tản nhiệt hiệu quả và hiệu ứng LED ấn tượng."
+  },
+  {
+    "id": "69ba44b42fa7379a1c1e0476",
+    "name": "Quạt tản nhiệt PC Xigmatek Infinity 120mm | Fan lẻ 120mm, RGB, Đen, gió xuôi",
+    "category": "Fan Case",
+    "price": 129000,
+    "brand": "XIGMATEK",
+    "specs": {
+      "fpsGeneric": "120mm",
+      "score": "RGB",
+      "v3": "gió xuôi"
+    },
+    "description": "Loại: Fan case\nHãng: Xigmatek \nKích thước: 120mm\nLed: RGB Fixed"
+  },
+  {
+    "id": "69ba47dc2fa7379a1c1e0943",
+    "name": "Quạt tản nhiệt PC Thermalright TL-S12 | Fan lẻ 120mm, ARGB, Đen, Gió Xuôi",
+    "category": "Fan Case",
+    "price": 139000,
+    "brand": "THERMALRIGHT",
+    "specs": {
+      "fpsGeneric": "120mm",
+      "score": "ARGB",
+      "v3": "gió xuôi"
+    },
+    "description": "Dimension: L120 mm x W120 mm x H25 mm\nRated Speed: 1500 RPM±10% (MAX)\nNoise Level: 23.2 dBA (MAX)"
+  },
+  {
+    "id": "69ba519d2fa7379a1c1e0b0c",
+    "name": "Quạt tản nhiệt PC Jonsbo ZA-240 | Kit liền khối 2 fan 242mm, ARGB, Gió xuôi",
+    "category": "Fan Case",
+    "price": 539000,
+    "brand": "JONSBO",
+    "specs": {
+      "fpsGeneric": "242mm",
+      "score": "ARGB",
+      "v3": "gió xuôi"
+    },
+    "description": "Fan Case liền khối Jonsbo ZA-240 ARGB là lựa chọn hoàn hảo cho các game thủ và người dùng PC muốn tối ưu khả năng làm mát cũng như nâng tầm thẩm mỹ cho dàn máy."
+  },
+  {
+    "id": "69ba53ac2fa7379a1c1e0dd6",
+    "name": "Quạt tản nhiệt PC Jonsbo ZA‑360 ARGB Black | Kit liền khối 3 fan 362mm, ARGB, Gió ngược",
+    "category": "Fan Case",
+    "price": 749000,
+    "brand": "JONSBO",
+    "specs": {
+      "fpsGeneric": "362mm",
+      "score": "ARGB",
+      "v3": "gió ngược"
+    },
+    "description": "Với tốc độ quay 700-2400rpm (±10%), Jonsbo ZA-360 ARGB tạo ra lưu lượng gió mạnh mẽ từ 21.46 đến 62.40 CFM, đảm bảo làm mát hiệu quả cho các linh kiện bên trong case."
+  },
+  {
+    "id": "69ba578f2fa7379a1c1e1af2",
+    "name": "Quạt tản nhiệt PC Thermalright TL‑S12W X3 | Kit 3 fan 120mm, ARGB, Trắng, Gió Ngược",
+    "category": "Fan Case",
+    "price": 399000,
+    "brand": "THERMALRIGHT",
+    "specs": {
+      "fpsGeneric": "120mm",
+      "score": "ARGB",
+      "v3": "gió ngược"
+    },
+    "description": "Bộ 3 fan TL-S12W sở hữu tốc độ quay tối đa lên tới 1500 RPM, mang lại lưu lượng gió 47.6 CFM cùng áp suất gió 1.31 mm H2O – đủ sức thổi bay mọi luồng khí nóng trong thùng máy."
+  },
+  {
+    "id": "69bb81d771f06fe69c8c27d1",
+    "name": "Laptop Gaming Gigabyte G5 MF5 52VN383SH",
+    "category": "Laptop Gaming",
+    "price": 21000000,
+    "brand": "GIGABYTE",
+    "specs": {
+      "fpsGeneric": "RTX 4050",
+      "score": "Core i5 13500H",
+      "v3": "144Hz"
+    },
+    "description": "Laptop Gaming Gigabyte G5 MF5 52VN383SH là một chiếc laptop gaming mạnh mẽ, được trang bị cấu hình ấn tượng với chip Intel Core i5-13500H thế hệ 13, card đồ họa NVIDIA GeForce RTX 4050 6GB GDDR6, RAM "
+  },
+  {
+    "id": "69bb848971f06fe69c8c2ca3",
+    "name": "Laptop Gaming ASUS TUF F16 FX608JPR-RV044W",
+    "category": "Laptop Gaming",
+    "price": 45000000,
+    "brand": "ASUS",
+    "specs": {
+      "fpsGeneric": "RTX 5070",
+      "score": "Core i7-14650HX",
+      "v3": "165Hz"
+    },
+    "description": "ASUS TUF Gaming F16 FX608JPR-RV044W là mẫu laptop gaming hiệu năng cao thuộc dòng TUF nổi tiếng của ASUS, hướng đến game thủ và người dùng cần sức mạnh xử lý mạnh mẽ."
+  },
+  {
+    "id": "69bb866f71f06fe69c8c2e8e",
+    "name": "Laptop Gaming MSI Thin 15 B13UC-3247VN | i5 13420H, 8GB, SSD 512GB, RTX 3050 4GB",
+    "category": "Laptop Gaming",
+    "price": 18790000,
+    "brand": "MSI",
+    "specs": {
+      "fpsGeneric": "RTX 3050",
+      "score": "Core i5-13420H",
+      "v3": "144Hz"
+    },
+    "description": "Laptop MSI Thin 15 B13UC 3247VN được tạo ra để đáp ứng chính xác nhu cầu đó – một chiếc laptop gaming mang DNA hiệu năng của MSI, nhưng được tối ưu về trọng lượng, độ mỏng và khả năng cân bằng giữa ch"
+  },
+  {
+    "id": "69bb890d71f06fe69c8c3234",
+    "name": "Laptop Văn phòng ACER Aspire Lite 14 AL14-71P-55P9",
+    "category": "Laptop Gaming",
+    "price": 15290000,
+    "brand": "ACER",
+    "specs": {
+      "fpsGeneric": "Intel Graphics",
+      "score": "Core i5 13500H",
+      "v3": "60Hz"
+    },
+    "description": "Laptop Acer Aspire Lite 14 AL14-71P-55P9 (NX.D7USV.001) được định vị là lựa chọn cân bằng giữa hiệu năng và tính di động, hướng đến nhóm người dùng văn phòng, sinh viên khối kinh tế – kỹ thuật và nhữn"
+  },
+  {
+    "id": "69bb8ad071f06fe69c8c3462",
+    "name": "Laptop Văn phòng DELL DC15250 1XVHG | i5 1334U, 8GB, SSD 512GB, 15.6\" FHD (NK)",
+    "category": "Laptop Gaming",
+    "price": 13290000,
+    "brand": "DELL",
+    "specs": {
+      "fpsGeneric": "Intel Graphics",
+      "score": "Core i5-1334U",
+      "v3": "120Hz"
+    },
+    "description": "Dell DC15250 1XVHG là mẫu laptop văn phòng hướng đến người dùng cần một thiết bị ổn định cho học tập, làm việc và sử dụng hằng ngày. Máy được trang bị bộ vi xử lý Intel Core i5 thế hệ 13 cùng ổ SSD tố"
+  },
+  {
+    "id": "69bb8d6971f06fe69c8c3bc1",
+    "name": "Laptop Gaming AI LENOVO Legion R7000P 00CD ",
+    "category": "Laptop Gaming",
+    "price": 28500000,
+    "brand": "LENOVO",
+    "specs": {
+      "fpsGeneric": "RTX 4060",
+      "score": "Ryzen 7 8845H",
+      "v3": "165Hz"
+    },
+    "description": "Với vi xử lý AMD Ryzen 7 8845H, RAM DDR5 tốc độ cao, SSD dung lượng lớn và đặc biệt là card đồ họa RTX 4060 8GB GDDR6, chiếc laptop này mang đến hiệu suất đáng kinh ngạc trong tầm giá."
+  },
+  {
+    "id": "69bb8f2171f06fe69c8c3e14",
+    "name": "Laptop Văn Phòng AI ACER Swift Lite 14 AI SFL14-51M-56HS",
+    "category": "Laptop Gaming",
+    "price": 17790000,
+    "brand": "ACER",
+    "specs": {
+      "fpsGeneric": "Intel Graphics",
+      "score": "Core Ultra 5 125U",
+      "v3": "60Hz"
+    },
+    "description": "Acer Swift Lite 14 AI SFL14-51M là một chiếc laptop hiện đại, kết hợp giữa hiệu năng mạnh mẽ và công nghệ AI tiên tiến, mang đến sự hỗ trợ vượt trội cho người dùng. Với bộ vi xử lý Intel® Core™ Ultra "
+  },
+  {
+    "id": "69bb965071f06fe69c8c5316",
+    "name": "PC Gaming Blue Gear Yasuo | Intel I5 12400F, RTX 3050 6G, H610M, RAM 16GB, SSD 500GB",
+    "category": "PC Gaming",
+    "price": 17107000,
+    "brand": "BLUE GEAR",
+    "specs": {
+      "fpsGeneric": "RTX 3050",
+      "score": "Core i5 12400F",
+      "v3": "16GB DDR4"
+    },
+    "description": "Trái tim của PC STAR Yasuo là vi xử lý Intel Core i5-12400F, một trong những CPU chơi game tốt nhất trong tầm giá. Với 6 nhân và 12 luồng xử lý cùng bộ nhớ đệm lớn, i5-12400F mang lại tốc độ phản hồi "
+  },
+  {
+    "id": "69bb97ff71f06fe69c8c5565",
+    "name": "PC Gaming Hunt E | AMD Ryzen 5 5500, A520, RAM 16GB, SSD 512GB, RX 6500XT",
+    "category": "PC Gaming",
+    "price": 13997000,
+    "brand": "BLUE GEAR",
+    "specs": {
+      "fpsGeneric": "RX 6500 XT",
+      "score": "Ryzen 5 5500",
+      "v3": "8GB DDR4"
+    },
+    "description": "PC STAR Hunt E sở hữu sức mạnh từ vi xử lý AMD Ryzen 5 5500 với 6 nhân và 12 luồng xử lý. Dựa trên kiến trúc Zen 3 tiên tiến, CPU này mang lại hiệu năng xử lý đa nhiệm ấn tượng và tốc độ phản hồi nhan"
+  },
+  {
+    "id": "69bb992571f06fe69c8c57a3",
+    "name": "PC Gaming Blue Gear Intel i5-14400F/ VGA RX 6500XT (H610)",
+    "category": "PC Gaming",
+    "price": 15790000,
+    "brand": "BLUE GEAR",
+    "specs": {
+      "fpsGeneric": "RX 6500 XT",
+      "score": "core i5 14400F",
+      "v3": "8GB DDR4"
+    },
+    "description": "PC bộ Intel i5-14400F / RX 6500XT (H610) là cấu hình máy tính tầm trung phù hợp cho nhu cầu chơi game phổ thông, học tập và làm việc hàng ngày với mức chi phí hợp lý."
+  },
+  {
+    "id": "69bb9dc171f06fe69c8c59cc",
+    "name": "PC Gaming Blue Gear AMD R5-5600X/ VGA RTX 5060",
+    "category": "PC Gaming",
+    "price": 23490000,
+    "brand": "BLUE GEAR",
+    "specs": {
+      "fpsGeneric": "RTX 5060",
+      "score": "Ryzen 5 5600X",
+      "v3": "8GB DDR4"
+    },
+    "description": "PC GVN AMD R5-5600X VGA RTX 3060 mang hiệu năng gaming ấn tượng có từ đội đỏ AMD và đội xanh NVIDIA."
+  },
+  {
+    "id": "69bb9eca71f06fe69c8c5b8e",
+    "name": "PC Gaming Blue Gear Intel i5-14400F/VGA ARC B580",
+    "category": "PC Gaming",
+    "price": 22190000,
+    "brand": "BLUE GEAR",
+    "specs": {
+      "fpsGeneric": "Arc B580",
+      "score": "Core i5 14400F",
+      "v3": "8GB DDR4"
+    },
+    "description": "PC GVN Intel i5-12400F / VGA Intel Arc B580 là bộ PC gaming tầm trung hướng tới hiệu năng ổn định, phù hợp cho cả chơi game lẫn làm việc cơ bản."
+  },
+  {
+    "id": "69bb9fae71f06fe69c8c5dc7",
+    "name": "PC Gaming Blue Gear AMD R5-5600X/ VGA RX 9060 XT 8GB",
+    "category": "PC Gaming",
+    "price": 24290000,
+    "brand": "BLUE GEAR",
+    "specs": {
+      "fpsGeneric": "RX 9060 XT",
+      "score": "Ryzen 5 5600X",
+      "v3": "16GB DDR4"
+    },
+    "description": "PC GVN AMD R5-5600X/ VGA RX 9060 XT 8GB là bộ PC để bàn được GearVN lắp ráp chuyên cho game thủ và người dùng sáng tạo nội dung. Với cấu hình cân bằng từ CPU AMD Ryzen 5 5600X kết hợp card đồ họa RX 9"
+  },
+  {
+    "id": "69bba0be71f06fe69c8c5fb2",
+    "name": "PC Gaming Storm D | Intel Core i5 12400F, RAM 16GB, SSD 512, RTX 3060",
+    "category": "PC Gaming",
+    "price": 20207000,
+    "brand": "BLUE GEAR",
+    "specs": {
+      "fpsGeneric": "RTX 3060",
+      "score": "Core i5 12400F",
+      "v3": "16GB DDR4"
+    },
+    "description": "PC Storm D | Intel Core i5 12400F, RTX 3060, RAM 16GB, SSD 512GB là lựa chọn lý tưởng cho game thủ cần một cỗ máy mạnh mẽ, ổn định để chiến các tựa game eSports và game AAA ở độ phân giải Full HD."
+  },
+  {
+    "id": "69bba19f71f06fe69c8c60cf",
+    "name": "PC Gaming STAR Falcon B Plus | Intel Core i5 12400F, B760M WIFI",
+    "category": "PC Gaming",
+    "price": 24990000,
+    "brand": "BLUE GEAR",
+    "specs": {
+      "fpsGeneric": "RTX 5060",
+      "score": "Core i5 12400F",
+      "v3": "16GB DDR5"
+    },
+    "description": "Bên trong chiếc PC này, trái tim của nó là bộ vi xử lý Intel Core i5 12400F. Với kiến trúc 10 nhân 12 luồng, i5 12400F đem lại hiệu suất tuyệt vời trong việc xử lý nhiều tác vụ đồng thời, từ chơi game"
+  },
+  {
+    "id": "69bba34c71f06fe69c8c61c8",
+    "name": "PC Gaming Blue Gear Pegasus B Plus | AMD Ryzen 5 7600, B650M, RX7600",
+    "category": "PC Gaming",
+    "price": 26697000,
+    "brand": "BLUE GEAR",
+    "specs": {
+      "fpsGeneric": "RX 7600",
+      "score": "Ryzen 5 7600",
+      "v3": "16GB DDR5"
+    },
+    "description": " Được xây dựng trên nền tảng socket AM5 mới nhất từ AMD, bộ PC này không chỉ mang lại trải nghiệm gaming 1080p mượt mà mà còn là nền tảng vững chắc để người dùng tiếp cận với các công nghệ xử lý dữ li"
+  },
+  {
+    "id": "69bba45671f06fe69c8c632a",
+    "name": "PC Gaming FrostBlade D Plus | Intel Core i5 14400F, B760M, RTX 3060",
+    "category": "PC Gaming",
+    "price": 26161000,
+    "brand": "BLUE GEAR",
+    "specs": {
+      "fpsGeneric": "RTX 3060",
+      "score": "Core i5 14400F",
+      "v3": "16GB DDR5"
+    },
+    "description": "PC STAR FrostBlade D Plus là sự giao thoa hoàn hảo giữa sức mạnh công nghệ đỉnh cao và tính thẩm mỹ tinh tế. Thuộc dòng sản phẩm White Line đặc trưng với tone màu trắng chủ đạo, FrostBlade D Plus mang"
+  },
+  {
+    "id": "69bba56a71f06fe69c8c6497",
+    "name": "PC Gaming STORM C PLUS | Intel Core Ultra 5 225F, DDR5 16GB, SSD 512, RTX 3050",
+    "category": "PC Gaming",
+    "price": 21258000,
+    "brand": "BLUE GEAR",
+    "specs": {
+      "fpsGeneric": "RTX 3050",
+      "score": "Ultra 5 225F",
+      "v3": "16GB DDR5"
+    },
+    "description": "PC STORM C PLUS là giải pháp nhập môn hoàn hảo cho dòng PC thế hệ mới. Với mức giá dễ tiếp cận, bộ máy vẫn đảm bảo trải nghiệm công nghệ tiên tiến nhờ vi xử lý Intel Core Ultra và card đồ họa RTX 3050"
+  },
+  {
+    "id": "69bba67771f06fe69c8c670c",
+    "name": "PC Gaming STAR FrostBlade B | Intel Core i5 14400F, B760M WIFI,  RTX 5060Ti",
+    "category": "PC Gaming",
+    "price": 32532000,
+    "brand": "BLUE GEAR",
+    "specs": {
+      "fpsGeneric": "RTX 5060 Ti",
+      "score": "Core i5 14400F",
+      "v3": "16GB DDR5"
+    },
+    "description": "Bạn đang tìm kiếm một dàn PC chiến game lẫn làm việc mượt mà, hiệu năng cao, thiết kế đẹp, giá hợp lý? PC STAR FrostBlade B chính là lựa chọn hàng đầu cho bạn trong phân khúc tầm trung – với sức mạnh "
+  },
+  {
+    "id": "69bba76d71f06fe69c8c67ef",
+    "name": "PC Gaming STAR Karmish A Plus | Intel Core i5 14600KF, B760, RTX 5060Ti",
+    "category": "PC Gaming",
+    "price": 43688000,
+    "brand": "BLUE GEAR",
+    "specs": {
+      "fpsGeneric": "RTX 5060",
+      "score": "Core i5 14600KF",
+      "v3": "32GB DDR5"
+    },
+    "description": "Karmish A Plus sở hữu cấu hình mạnh mẽ với vi xử lý Intel Gen 14 dòng KF, card đồ họa kiến trúc Blackwell và bộ nhớ DDR5 siêu tốc, mang lại trải nghiệm vận hành mượt mà trong mọi tình huống."
+  },
+  {
+    "id": "69bba86171f06fe69c8c68cd",
+    "name": "PC Gaming STAR Storm S Plus | Intel i5 14600KF, B760M, RTX 4060",
+    "category": "PC Gaming",
+    "price": 29179000,
+    "brand": "BLUE GEAR",
+    "specs": {
+      "fpsGeneric": "RTX 4060",
+      "score": "Core i5 14600KF",
+      "v3": "16GB DDR5"
+    },
+    "description": "Hệ thống sở hữu vi xử lý Intel Core i5-14600KF với 14 nhân và 20 luồng, đạt xung nhịp tối đa lên tới 5.3GHz. Hậu tố \"KF\" cho phép CPU tập trung hoàn toàn vào sức mạnh tính toán thuần túy, mang lại khả"
+  },
+  {
+    "id": "69bba93971f06fe69c8c69ae",
+    "name": "PC Gaming STAR Force S | AMD Ryzen 7 7800X3D, B650M WIFI, RTX 5060 Ti",
+    "category": "PC Gaming",
+    "price": 40674000,
+    "brand": "BLUE GEAR",
+    "specs": {
+      "fpsGeneric": "RTX 5060 Ti",
+      "score": "Ryzen 7 7800X3D",
+      "v3": "16GB DDR5"
+    },
+    "description": "AMD Ryzen 7 7800X3D đã từ lâu nổi bật với khả năng xử lý đa nhiệm xuất sắc và tối ưu cho các tác vụ chơi game, đặc biệt nhờ vào công nghệ 3D V-Cache giúp tăng bộ nhớ đệm, giảm độ trễ và nâng cao hiệu "
+  },
+  {
+    "id": "69bbaa5b71f06fe69c8c6a91",
+    "name": "PC Gaming Blue Gear AMD GAMING Ryzen 5 5500 - 8GB DDR4 - RTX 3050 6GB",
+    "category": "PC Gaming",
+    "price": 12680000,
+    "brand": "BLUE GEAR",
+    "specs": {
+      "fpsGeneric": "RTX 3050",
+      "score": "Ryzen 5 5500",
+      "v3": "8GB DDR4"
+    },
+    "description": "PC TTG AMD Gaming Ryzen 5 5500 / RTX 3050 6GB là cấu hình PC tầm trung – giá mềm, phù hợp cho nhu cầu chơi game phổ thông và sử dụng hàng ngày."
+  },
+  {
+    "id": "69bbab1f71f06fe69c8c6b74",
+    "name": "PC Gaming Blue Gear AMD GAMING Ryzen 5 5500 - 8GB DDR4 - RTX 3050 8GB",
+    "category": "PC Gaming",
+    "price": 13980000,
+    "brand": "BLUE GEAR",
+    "specs": {
+      "fpsGeneric": "RTX 3050",
+      "score": "Ryzen 5 5500",
+      "v3": "8GB DDR4"
+    },
+    "description": "PC TTG AMD Gaming Ryzen 5 5500 / RTX 3050 8GB là cấu hình PC tầm trung giá rẻ, phù hợp cho người dùng muốn chơi game ổn định mà không cần đầu tư quá nhiều chi phí."
+  }
+]
