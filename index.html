@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Gear AI Commander</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue-gear: #00d1ff;
+            --matrix-bg: #020617;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--matrix-bg);
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(0, 209, 255, 0.05) 0%, transparent 80%),
+                linear-gradient(rgba(0, 209, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 209, 255, 0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 50px 50px, 50px 50px;
+        }
+        .font-heading { font-family: 'Orbitron', sans-serif; }
+        .chat-container { height: calc(100vh - 280px); }
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 209, 255, 0.2);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        }
+        .bot-msg {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px 20px 20px 0;
+        }
+        .user-msg {
+            background: linear-gradient(135deg, #00d1ff 0%, #0076ff 100%);
+            color: #000;
+            font-weight: 700;
+            border-radius: 20px 20px 0 20px;
+        }
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: var(--blue-gear);
+            opacity: 0.1;
+            position: absolute;
+            animation: scan 8s linear infinite;
+            z-index: 100;
+            pointer-events: none;
+        }
+        @keyframes scan {
+            from { top: 0; }
+            to { top: 100%; }
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--blue-gear); border-radius: 10px; }
+    </style>
+</head>
+<body class="min-h-screen text-slate-300 p-4 md:p-8 flex flex-col items-center">
+    <div class="scanline"></div>
+
+    <div class="w-full max-w-5xl">
+        <!-- 🛰️ HEADER HUD -->
+        <div class="glass-panel rounded-t-[2.5rem] p-6 mb-1 flex justify-between items-center border-b-2 border-blue-gear/30">
+            <div class="flex items-center gap-4">
+                <div class="w-14 h-14 bg-blue-gear/20 rounded-2xl flex items-center justify-center border border-blue-gear shadow-[0_0_15px_rgba(0,209,255,0.4)]">
+                    <span class="text-3xl">⚓</span>
+                </div>
+                <div>
+                    <h1 class="font-heading font-black text-white text-xl md:text-2xl tracking-tighter italic">BLUE GEAR <span class="text-blue-gear">COMMANDER _</span></h1>
+                    <div class="flex items-center gap-2">
+                        <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                        <span class="text-[9px] font-black uppercase tracking-[0.3em] text-emerald-500">Neural Link: Active</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hidden md:block text-right border-l border-white/10 pl-6">
+                <p class="text-[8px] font-bold text-slate-500 uppercase tracking-widest">Protocol: AI Agent Level 4</p>
+                <p class="text-[8px] font-bold text-slate-500 uppercase tracking-widest">Engine: Gemini 1.5 Flash</p>
+            </div>
+        </div>
+
+        <!-- 📟 CHAT AREA -->
+        <div id="chat-box" class="glass-panel chat-container overflow-y-auto p-6 flex flex-col gap-6 custom-scrollbar shadow-inner">
+            <!-- Bot Message -->
+            <div class="flex justify-start animate-fade-in">
+                <div class="bot-msg p-5 max-w-[85%] shadow-lg">
+                    <p class="text-[9px] font-black text-blue-gear uppercase tracking-widest mb-2 italic">// Hệ thống tiếp nhận</p>
+                    <p class="text-sm leading-relaxed">Chào Captain! Tôi là trợ lý trí tuệ nhân tạo của hạm đội Blue Gear. Bộ não của tôi đã được kết nối với dữ liệu thời gian thực và Google Search. Ngài muốn kiểm tra thông tin linh kiện hay tìm kiếm chiến lược gì hôm nay?</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ⌨️ INPUT HUB -->
+        <div class="glass-panel rounded-b-[2.5rem] p-4 mt-1 flex gap-4 border-t-2 border-blue-gear/30">
+            <input type="text" id="user-input" placeholder="Nhập tọa độ câu hỏi hoặc yêu cầu tại đây..." 
+                   class="flex-1 bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white text-sm font-medium focus:outline-none focus:border-blue-gear transition-all italic shadow-inner">
+            <button onclick="sendMessage()" id="send-btn" 
+                    class="bg-blue-gear hover:bg-white text-black font-black px-10 py-4 rounded-2xl transition-all active:scale-95 shadow-[0_0_20px_rgba(0,209,255,0.3)] font-heading text-xs uppercase italic tracking-widest">
+                Khai hỏa _
+            </button>
+        </div>
+
+        <p class="text-center text-[8px] text-slate-600 font-bold uppercase tracking-[0.5em] mt-6 italic">© 2026 Blue Gear Fleet // Secure Tactical Link</p>
+    </div>
+
+    <script>
+        const chatBox = document.getElementById('chat-box');
+        const userInput = document.getElementById('user-input');
+
+        async function sendMessage() {
+            const msg = userInput.value.trim();
+            if (!msg) return;
+
+            appendMessage(msg, 'user');
+            userInput.value = '';
+            
+            const loadingId = appendMessage('Đang truy quét dữ liệu...', 'bot', true);
+
+            try {
+                const response = await fetch('http://localhost:8000/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: msg })
+                });
+                const data = await response.json();
+                
+                document.getElementById(loadingId).remove();
+                appendMessage(data.answer, 'bot', false, data.using_search);
+            } catch (err) {
+                document.getElementById(loadingId).innerHTML = `<span class="text-red-500 font-bold">❌ LỖI: Mất kết nối tới bộ não!</span><br><small class="text-slate-500 italic">Captain hãy đảm bảo file main.py đang chạy tại cổng 8000.</small>`;
+            }
+        }
+
+        function appendMessage(text, side, isLoading = false, hasSearch = false) {
+            const id = 'msg-' + Math.random().toString(36).substr(2, 9);
+            const div = document.createElement('div');
+            div.className = side === 'user' ? 'flex justify-end mb-2' : 'flex justify-start mb-2';
+            div.id = id;
+
+            const content = document.createElement('div');
+            if (side === 'user') {
+                content.className = 'user-msg p-4 max-w-[80%] shadow-lg text-sm';
+                content.innerText = text;
+            } else {
+                content.className = 'bot-msg p-5 max-w-[85%] shadow-lg text-sm';
+                let badge = hasSearch ? '<div class="flex items-center gap-2 mb-2"><span class="bg-blue-gear/20 text-blue-gear text-[7px] font-black px-2 py-0.5 rounded border border-blue-gear/30 uppercase tracking-widest animate-pulse">🌐 Google Search Grounding</span></div>' : '<div class="text-[8px] font-black text-slate-500 uppercase mb-2 tracking-widest italic">// Decoded Signal</div>';
+                content.innerHTML = badge + '<div class="leading-relaxed">' + text.replace(/\n/g, '<br>') + '</div>';
+            }
+
+            div.appendChild(content);
+            chatBox.appendChild(div);
+            chatBox.scrollTop = chatBox.scrollHeight;
+            return id;
+        }
+
+        userInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
+    </script>
+</body>
+</html>
