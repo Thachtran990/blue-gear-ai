@@ -1,78 +1,90 @@
 import json
+import os
+import re
 from pymongo import MongoClient
-from bson import json_util
+from dotenv import load_dotenv
 
-# 1. KẾT NỐI TỚI TRẠM DỮ LIỆU MONGODB
-# Captain hãy điền Connection String của ngài vào đây
-MONGO_URI = os.getenv("MONGO_URI")
-if not MONGO_URI:
-    print("🚨 BÁO ĐỘNG: Không tìm thấy MONGO_URI trong file .env!")
-    print("Mẹo: Captain hãy kiểm tra lại file .env xem đã ghi đúng tên biến chưa nhé.")
-    exit()
+# 🚀 1. KHỞI TẠO
+load_dotenv()
+
+def slugify(text):
+    if not text: return ""
+    text = text.lower()
+    patterns = {'[àáảãạăằắẳẵặâầấẩẫậ]': 'a', '[èéẻẽẹêềếểễệ]': 'e', '[ìíỉĩị]': 'i', '[òóỏõọôồốổỗộơờớởỡợ]': 'o', '[ùúủũụưừứửữự]': 'u', '[ỳýỷỹỵ]': 'y', 'đ': 'd'}
+    for pattern, replacement in patterns.items(): text = re.sub(pattern, replacement, text)
+    text = re.sub(r'[^a-z0-9\s-]', '', text)
+    return re.sub(r'\s+', '-', text).strip('-')
+
+# 🛠️ CÔNG CỤ TRUY QUÉT DỮ LIỆU "LÌ LỢM"
+def mine_data(specs_dict, product_name, category):
+    logic = {"wattage": 0, "socket": "N/A", "ram_type": "N/A", "performance_score": 0}
     
-client = MongoClient(MONGO_URI)
+    # Gộp tất cả text lại để quét cho nhanh
+    all_text = (product_name + " " + " ".join([f"{k} {v}" for k, v in specs_dict.items()])).upper()
 
-# Đảm bảo đúng tên Database và Collection
-db = client['test'] 
-collection = db['products']
+    # 1. TRUY TÌM SOCKET (Dành cho CPU & Main)
+    if any(k in category for k in ["CPU", "Mainboard"]):
+        if "LGA 1700" in all_text or "LGA1700" in all_text or "1700" in all_text: logic["socket"] = "LGA1700"
+        elif "AM4" in all_text: logic["socket"] = "AM4"
+        elif "AM5" in all_text: logic["socket"] = "AM5"
+        elif "LGA 1200" in all_text or "1200" in all_text: logic["socket"] = "LGA1200"
+        elif "1851" in all_text: logic["socket"] = "LGA1851"
+
+    # 2. TRUY TÌM CÔNG SUẤT (TDP / WATTAGE)
+    # Tìm số đứng trước chữ W, WATT, TPD
+    watt_match = re.search(r'(\d+)\s*(W|WATT|TDP)', all_text)
+    if watt_match:
+        logic["wattage"] = int(watt_match.group(1))
+    else:
+        # Nếu là Nguồn, tìm số lớn nhất (thường là công suất tổng)
+        if "Nguồn" in category:
+            nums = re.findall(r'\d+', all_text)
+            nums = [int(n) for n in nums if 300 <= int(n) <= 1600]
+            if nums: logic["wattage"] = max(nums)
+
+    # 3. TRUY TÌM LOẠI RAM (DDR4 / DDR5)
+    if "DDR5" in all_text: logic["ram_type"] = "DDR5"
+    elif "DDR4" in all_text: logic["ram_type"] = "DDR4"
+
+    return logic
 
 def export_to_json():
-    print("🛰️  Radar: Đang truy quét hạm đội dữ liệu...")
-    
+    print("🛰️  AI Radar: Đang truy quét và khai thác dữ liệu thô...")
+    MONGO_URI = os.getenv("MONGO_URI")
     try:
-        # Lấy toàn bộ sản phẩm
+        client = MongoClient(MONGO_URI)
+        db = client['test'] 
+        collection = db['products']
         products = list(collection.find({}))
-        ai_friendly_data = []
         
+        final_data = []
         for p in products:
-            # 🚀 XỬ LÝ MẢNG FILTERS ĐA ĐIỂM (Lọc bỏ _id ẩn)
-            raw_filters = p.get("filters", [])
-            clean_filters = []
-            if isinstance(raw_filters, list):
-                for f in raw_filters:
-                    # Chỉ lấy k và v, bỏ qua _id để tránh lỗi JSON serializable
-                    clean_filters.append({
-                        "k": f.get("k", ""),
-                        "v": f.get("v", "")
-                    })
-
-            # 🚀 XỬ LÝ MẢNG SPECS CHI TIẾT
-            raw_specs = p.get("specs", [])
-            clean_specs = []
-            if isinstance(raw_specs, list):
-                for s in raw_specs:
-                    clean_specs.append({
-                        "k": s.get("k", ""),
-                        "v": s.get("v", "")
-                    })
-
-            # 🎯 ĐÓNG GÓI TỌA ĐỘ CHIẾN THUẬT
-            item = {
-                "id": str(p.get("_id")),
-                "name": p.get("name"),
-                "category": p.get("category"),
-                "brand": p.get("brand"),
-                "price": p.get("price"),
-                # Lấy trọn bộ 8 Specs hiển thị
-                "performance": p.get("performance", {}),
-                # Mảng bộ lọc đã được làm sạch
-                "filters": clean_filters,
-                "specs": clean_specs,
-                "description": p.get("shortDescription", p.get("description", ""))[:300]
-            }
-            ai_friendly_data.append(item)
-
-        # 2. XUẤT RA FILE JSON (UTF-8 chuẩn chỉ)
-        with open('products.json', 'w', encoding='utf-8') as f:
-            json.dump(ai_friendly_data, f, ensure_ascii=False, indent=2)
+            p_name = p.get("name", "")
+            cat = p.get("category", "")
+            # Biến specs thành dictionary
+            specs_dict = {s.get("k"): s.get("v") for s in p.get("specs", []) if s.get("k")}
             
-        print("--------------------------------------------------")
-        print(f"✅ THÀNH CÔNG: Đã cấy ghép {len(ai_friendly_data)} sản phẩm.")
-        print("📂 File products.json đã được làm sạch và sẵn sàng cho AI!")
-        print("--------------------------------------------------")
+            # Sử dụng bộ lọc "lì lợm" để đào dữ liệu
+            ai_logic = mine_data(specs_dict, p_name, cat)
 
+            item = {
+                "slug": p.get("slug") or slugify(p_name),
+                "name": p_name,
+                "category": cat,
+                "price": p.get("price", 0),
+                "brand": p.get("brand"),
+                "technical_details": specs_dict,
+                "ai_logic": ai_logic # 🎯 Dữ liệu vàng cho AI làm toán
+            }
+            final_data.append(item)
+
+        with open('products.json', 'w', encoding='utf-8') as f:
+            json.dump(final_data, f, ensure_ascii=False, indent=2)
+            
+        print(f"✅ THÀNH CÔNG: Đã đào được dữ liệu từ {len(final_data)} sản phẩm.")
+        print("🚀 Captain không cần sửa gì trong DB cả, script đã tự 'thông não' xong!")
     except Exception as e:
-        print(f"❌ LỖI HỆ THỐNG: {e}")
+        print(f"❌ LỖI TRUY QUÉT: {e}")
 
 if __name__ == "__main__":
     export_to_json()

@@ -4,127 +4,88 @@ import hashlib
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from google import genai
-from google.genai import types
+from openai import OpenAI
 from dotenv import load_dotenv
 
-# 🚀 1. NẠP BIẾN MÔI TRƯỜNG
+# 🚀 1. KHỞI TẠO HỆ THỐNG
 load_dotenv()
-MY_API_KEY = os.getenv("GEMINI_API_KEY")
-
-client = genai.Client(api_key=MY_API_KEY)
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+client = OpenAI(api_key=OPENAI_API_KEY)
 app = FastAPI()
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["*"],
-    allow_headers=["*"]
-)
+app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 
-TARGET_MODEL = 'gemini-2.5-flash'
+TARGET_MODEL = "gpt-4o-mini"
 
-# 🗄️ BỘ NHỚ ĐỆM & TỪ KHÓA LỌC
-response_cache = {}
-TECH_KEYWORDS = [
-    "pc", "laptop", "vga", "cpu", "ram", "main", "nguồn", "case", "chuột", "phím", 
-    "tai nghe", "màn hình", "tản nhiệt", "ssd", "ổ cứng", "build", "tư vấn", 
-    "so sánh", "giá", "bao nhiêu", "lỗi", "hỏng", "matrix", "blue gear"
-]
+# 📁 NẠP KHO HÀNG CHUẨN HÓA
+def load_standardized_fleet():
+    if os.path.exists('products.json'):
+        with open('products.json', 'r', encoding='utf-8') as f:
+            return json.load(f)
+    return []
 
-# 📁 NẠP DỮ LIỆU HẠM ĐỘI
-def load_fleet_data():
-    try:
-        if os.path.exists('products.json'):
-            with open('products.json', 'r', encoding='utf-8') as f:
-                return json.load(f)
-        return []
-    except Exception as e:
-        print(f"⚠️ Radar: Lỗi đọc file products.json: {e}")
-        return []
-
-fleet_data = load_fleet_data()
-
-# 🧠 HƯỚNG DẪN CHIẾN THUẬT (SYSTEM INSTRUCTION NÂNG CẤP)
-SYSTEM_PROMPT = f"""
-Bạn là 'Blue Gear AI Commander'. Bạn có nhiệm vụ dẫn đường cho Captain tìm thấy vũ khí phù hợp.
-
-DỮ LIỆU KHO HÀNG:
-{json.dumps(fleet_data, ensure_ascii=False)}
-
-QUY TẮC ĐIỀU HƯỚNG (URL GENERATION):
-1. DẪN ĐẾN SẢN PHẨM: Nếu bạn gợi ý 1 sản phẩm cụ thể, hãy dùng định dạng: [Tên sản phẩm](/product/slug-cua-san-pham). 
-   (Ví dụ: [Chuột G502](/product/chuot-logitech-g502-x-plus)).
-2. DẪN ĐẾN DANH MỤC: Nếu khách hỏi chung chung về một loại linh kiện, hãy dẫn họ tới: [/category/ten-danh-muc-viet-thuong-khong-dau-thay-khoang-cach-bang-dau-gach-ngang].
-   (Ví dụ: [Xem tất cả VGA](/category/vga-card-man-hinh)).
-3. KHÔNG TỰ CHẾ LINK: Chỉ dùng Slug có trong dữ liệu JSON. Nếu không chắc chắn, chỉ dẫn tới Link danh mục chung.
-
-PHONG CÁCH: Quyết đoán, chuyên nghiệp, hỗ trợ Captain hết mình để 'chốt đơn' thành công.
-"""
-
-class ChatMessage(BaseModel):
-    role: str
-    content: str
+full_fleet = load_standardized_fleet()
 
 class ChatRequest(BaseModel):
     message: str
-    history: list[ChatMessage] = []
-
-def is_off_topic(message: str) -> bool:
-    msg_lower = message.lower()
-    if len(msg_lower) < 5: return False
-    return not any(key in msg_lower for key in TECH_KEYWORDS)
+    history: list = []
 
 @app.post("/chat")
-async def chat_endpoint(request: ChatRequest):
+def chat_endpoint(request: ChatRequest):
     user_msg = request.message.strip()
     
-    # ⚡ 1. KIỂM TRA CACHE
-    cache_key = hashlib.md5(user_msg.lower().encode()).hexdigest()
-    if cache_key in response_cache:
-        return response_cache[cache_key]
+    # 🧠 SYSTEM PROMPT: NÂNG CẤP LOGIC SO SÁNH & CỔ CHAI
+    SYSTEM_PROMPT = f"""
+    Bạn là 'Blue Gear AI Commander'. Bạn đang quản lý hạm đội linh kiện thông minh.
+    KHO HÀNG ({len(full_fleet)} món): {json.dumps(full_fleet, ensure_ascii=False)}
 
-    # 🛡️ 2. LỌC NHIỄU
-    if is_off_topic(user_msg):
-        return {"answer": "Rõ Captain. Tôi chỉ có thể hỗ trợ các vấn đề về vũ khí phần cứng tại Blue Gear. Ngài muốn kiểm tra linh kiện nào?", "using_search": False}
+    QUY TẮC TÁC CHIẾN CỤM 2:
+    
+    1. SO SÁNH SẢN PHẨM:
+       - Khi khách yêu cầu so sánh 2 món (ví dụ: RTX 3060 vs GTX 1660 Ti), hãy dùng 'ai_logic.performance_score'.
+       - Tính toán % chênh lệch hiệu năng: ((Score_A - Score_B) / Score_B) * 100.
+       - Liệt kê các thông số kỹ thuật khác biệt lớn từ 'technical_details'.
+       - Link: [Tên](/product/slug).
+
+    2. PHÂN TÍCH CỔ CHAI (BOTTLENECK):
+       - Quy tắc: CPU và VGA nên có 'performance_score' lệch nhau không quá 20-25 điểm.
+       - Nếu Score CPU < (Score VGA - 25): Cảnh báo "Nghẽn cổ chai nặng do CPU yếu".
+       - Nếu Score VGA < (Score CPU - 30): Cảnh báo "Lãng phí sức mạnh CPU cho VGA này".
+       - Gợi ý linh kiện trong kho để cân bằng lại.
+
+    3. BUILD PC & TÍNH NGUỒN (Duy trì Cụm 1):
+       - (CPU_watt + VGA_watt + 100W dự phòng) <= Nguồn_watt.
+       - Socket và RAM Type phải khớp 100%.
+
+    4. KỶ LUẬT TRÌNH BÀY:
+       - Link sạch: [Tên sản phẩm](/product/slug). Cấm domain lạ.
+       - Trả lời quyết đoán, phong cách quân sự, ngắn gọn.
+    """
 
     try:
-        # 3. CHUẨN BỊ NGỮ CẢNH
-        gemini_history = [
-            types.Content(role=msg.role, parts=[types.Part(text=msg.content)])
-            for msg in request.history
-        ]
-        
-        current_contents = gemini_history + [
-            types.Content(role="user", parts=[types.Part(text=user_msg)])
-        ]
+        messages = [{"role": "system", "content": SYSTEM_PROMPT}]
+        for msg in request.history[-6:]:
+            role = "assistant" if msg['role'] == "model" else "user"
+            messages.append({"role": role, "content": msg['content']})
+        messages.append({"role": "user", "content": user_msg})
 
-        # 🔫 KHAI HỎA
-        response = client.models.generate_content(
+        response = client.chat.completions.create(
             model=TARGET_MODEL,
-            contents=current_contents,
-            config=types.GenerateContentConfig(
-                system_instruction=SYSTEM_PROMPT,
-                tools=[types.Tool(google_search=types.GoogleSearch())],
-                temperature=0.7
-            )
+            messages=messages,
+            temperature=0, 
         )
         
-        answer = response.text if response.text else "Radar bị nhiễu, vui lòng thử lại."
-        result = {
-            "answer": answer,
-            "using_search": True if response.candidates[0].grounding_metadata else False
-        }
+        answer = response.choices[0].message.content
+        
+        # Hậu kiểm link (Bảo hiểm 100%)
+        bad_domains = ["https://example.com", "http://example.com", "https://bluegear.com"]
+        for domain in bad_domains:
+            answer = answer.replace(domain, "")
 
-        # Lưu cache cho các câu hỏi tra cứu
-        if len(user_msg) > 10:
-            response_cache[cache_key] = result
-
-        return result
-    
+        return {"answer": answer, "using_search": False}
+        
     except Exception as e:
-        print(f"❌ LỖI HỆ THỐNG: {str(e)}")
-        raise HTTPException(status_code=500, detail=str(e))
+        return {"answer": f"🚨 Lỗi radar: {str(e)}"}
 
 if __name__ == "__main__":
     import uvicorn
