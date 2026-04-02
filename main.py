@@ -16,8 +16,6 @@ app = FastAPI()
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 
 TARGET_MODEL = "gpt-4o-mini"
-
-# 🗄️ BỘ NHỚ CACHE & DỮ LIỆU
 response_cache = {}
 
 def load_standardized_fleet():
@@ -28,13 +26,12 @@ def load_standardized_fleet():
 
 full_fleet = load_standardized_fleet()
 
-# 🛡️ SMART GATEKEEPER (Bộ lọc thông minh)
 def is_relevant_query(query: str):
-    """Phân loại câu hỏi để tránh trả lời ngoài luồng"""
     query_lower = query.lower()
     fast_keywords = [
         "chuột", "phím", "tai nghe", "vga", "cpu", "ram", "main", "nguồn", "pc", "laptop",
-        "build", "tư vấn", "lỗi", "hỏng", "sửa", "giá", "so sánh", "fps", "game", "tương thích"
+        "build", "tư vấn", "lỗi", "hỏng", "sửa", "giá", "so sánh", "fps", "game", "tương thích",
+        "arena", "quét"
     ]
     if any(k in query_lower for k in fast_keywords):
         return True
@@ -43,7 +40,7 @@ def is_relevant_query(query: str):
         response = client.chat.completions.create(
             model=TARGET_MODEL,
             messages=[
-                {"role": "system", "content": "Bạn là bộ lọc cho shop máy tính. Nếu liên quan linh kiện, kỹ thuật, build PC hoặc chào hỏi, đáp 'PASS'. Ngược lại đáp 'FAIL'."},
+                {"role": "system", "content": "Bạn là bộ lọc cho shop. Nếu liên quan máy tính đáp 'PASS', ngược lại 'FAIL'."},
                 {"role": "user", "content": query}
             ],
             max_tokens=5, temperature=0
@@ -60,48 +57,48 @@ class ChatRequest(BaseModel):
 def chat_endpoint(request: ChatRequest):
     user_msg = request.message.strip()
     
-    # 1. Kiểm tra Gatekeeper
     if not is_relevant_query(user_msg):
-        return {
-            "answer": "Báo cáo Captain, tôi chỉ chuyên trách quản lý hạm đội Blue Gear và hỗ trợ kỹ thuật máy tính. Yêu cầu của ngài nằm ngoài phạm vi tác chiến của tôi.",
-            "using_search": False
-        }
+        return {"answer": "Báo cáo Captain, yêu cầu nằm ngoài phạm vi tác chiến của tôi.", "using_search": False}
 
-    # 2. Kiểm tra Cache
     cache_key = hashlib.md5(user_msg.lower().encode()).hexdigest()
     if cache_key in response_cache:
         return response_cache[cache_key]
 
-    # 3. Xây dựng System Prompt cực kỳ chi tiết
+    # 3. 🧠 SYSTEM PROMPT (ÉP SUY NGHĨ NHÁP BẰNG CHAIN-OF-THOUGHT)
     SYSTEM_PROMPT = f"""
-    Bạn là 'Blue Gear AI Commander'. Trạm chỉ huy tối cao của Blue Gear.
-    DỮ LIỆU KHO HÀNG ({len(full_fleet)} món): {json.dumps(full_fleet, ensure_ascii=False)}
+    Bạn là 'Blue Gear AI Commander'. DỮ LIỆU ({len(full_fleet)} món): {json.dumps(full_fleet, ensure_ascii=False)}
+    
+    NẾU THẤY LỆNH [BUILD_MODE], BẮT BUỘC TRẢ VỀ JSON VÀ PHẢI LÀM ĐÚNG 4 BƯỚC SUY NGHĨ NHÁP SAU ĐÂY VÀO TRƯỜNG "_thinking_nhap_ra_giay":
 
-    QUY TẮC TÁC CHIẾN (MASTER RULES):
+    Bước 1 (Tương thích): Socket CPU có khớp Main không? Loại RAM (DDR4/5) có khớp Main không? (Nhớ: CPU Intel hỗ trợ cả hai, Main mới quyết định).
+    Bước 2 (Cổ chai): CPU này đi với VGA này có nghẽn không? (Quy tắc cứng: i3/Ryzen 3 đi với VGA 4060 trở lên CHẮC CHẮN NGHẼN > 15%).
+    Bước 3 (Tính Watt): Watt CPU + Watt VGA + 100W = [A]. Nguồn yêu cầu = [A] + 150W = [B].
+    Bước 4 (So sánh Nguồn): Cục nguồn khách chọn là [C] Watt. Lấy [C] trừ đi [B]. Nếu kết quả >= 200W, phải CHÊ LÃNG PHÍ.
 
-    1. LINK SẢN PHẨM (QUAN TRỌNG NHẤT):
-       - Định dạng bắt buộc: [Tên sản phẩm](/product/slug).
-       - TUYỆT ĐỐI KHÔNG thêm bất kỳ domain nào (bluegear.com, example.com, localhost) hay http/https. 
+    Sau khi nháp xong, điền kết quả vào JSON theo format chuẩn sau:
+    {{
+        "_thinking_nhap_ra_giay": "Ghi toàn bộ nháp của 4 bước trên vào đây...",
+        "compatibility": {{
+            "is_ok": true/false,
+            "issues": ["Ghi lỗi nếu sai Socket/RAM, nếu đúng BẮT BUỘC để mảng rỗng"],
+            "suggestions": ["Gợi ý thay thế hoặc để rỗng"]
+        }},
+        "bottleneck": {{
+            "is_ok": true/false,
+            "percent": "Ví dụ: 0% hoặc 25%",
+            "culprit": "Ghi thủ phạm (nếu có) hoặc ghi 'Không có'",
+            "suggestion": "Ghi cách khắc phục hoặc khen 'Cân bằng tốt'"
+        }},
+        "psu_recommendation": {{
+            "calculation": "Ghi rõ phép cộng. VD: CPU (65W) + VGA (115W) + Khác (100W) = 280W",
+            "estimated_watt": số_nguyên,
+            "recommended_watt": số_nguyên,
+            "suggestion": "Viết lời khuyên dựa trên nháp Bước 4. Nếu dư thừa >= 200W, BẮT BUỘC dùng từ 'QUÁ DƯ THỪA, LÃNG PHÍ'. KẾT THÚC BẰNG CÂU: 'Lưu ý: Nguồn máy tính chỉ nên hoạt động ở mức 75-80% công suất thiết kế để đảm bảo nhiệt độ mát mẻ, tuổi thọ linh kiện và dòng điện ổn định nhất.'"
+        }},
+        "overall_verdict": "Kết luận tổng thể."
+    }}
 
-    2. BUILD PC & TƯƠNG THÍCH:
-       - Socket Check: CPU và Mainboard PHẢI trùng khớp 'ai_logic.socket'.
-       - RAM Check: 'ai_logic.ram_type' của RAM và Mainboard PHẢI giống nhau.
-       - Nguồn Check: Tổng (CPU_watt + VGA_watt + 100W dự phòng) <= Nguồn_watt.
-
-    3. SO SÁNH & CỔ CHAI:
-       - Dùng 'ai_logic.performance_score' để tính % chênh lệch hiệu năng.
-       - Cảnh báo cổ chai (Bottleneck) nếu Score CPU và VGA lệch nhau > 25 điểm.
-
-    4. ƯỚC LƯỢNG FPS (Dựa trên Score VGA):
-       - Score >= 85: 4K/2K Ultra (Cyberpunk > 60, Valorant > 400).
-       - Score 60-84: 2K/FHD Ultra (Cyberpunk > 60, Valorant > 300).
-       - Score 40-59: FHD High (GTA V > 80, Valorant > 200).
-       - Score < 40: FHD Medium (Valorant > 100).
-
-    5. AI DOCTOR (CHẨN ĐOÁN):
-       - Khi khách báo lỗi: Hỏi triệu chứng -> Đưa ra 3 nguyên nhân -> Gợi ý linh kiện thay thế từ KHO.
-
-    6. PHONG CÁCH: Captain, quân sự, ngắn gọn, trình bày bảng biểu sạch sẽ khi so sánh hoặc build máy. Không lẩm bẩm tính toán.
+    [ARENA_MODE]: Giữ nguyên như cũ. TRẢ DUY NHẤT JSON.
     """
 
     try:
@@ -111,16 +108,20 @@ def chat_endpoint(request: ChatRequest):
             messages.append({"role": role, "content": msg['content']})
         messages.append({"role": "user", "content": user_msg})
 
+        # BẬT CHẾ ĐỘ ÉP JSON BẰNG API CỦA OPENAI
         response = client.chat.completions.create(
             model=TARGET_MODEL,
             messages=messages,
-            temperature=0, 
+            temperature=0,
+            response_format={ "type": "json_object" } 
         )
         
         answer = response.choices[0].message.content
         
-        # Hậu kiểm link - Xóa sạch mọi dấu vết domain
-        bad_domains = ["https://example.com", "http://example.com", "https://bluegear.com", "localhost:3000"]
+        if ("[ARENA_MODE]" in user_msg or "[BUILD_MODE]" in user_msg) and "```" in answer:
+            answer = answer.replace("```json", "").replace("```", "").strip()
+
+        bad_domains = ["[https://example.com](https://example.com)", "[http://example.com](http://example.com)", "[https://bluegear.com](https://bluegear.com)", "localhost:3000", "http://localhost:8000"]
         for domain in bad_domains:
             answer = answer.replace(domain, "")
 
@@ -134,5 +135,5 @@ def chat_endpoint(request: ChatRequest):
 
 if __name__ == "__main__":
     import uvicorn
-    print(f"🚀 AI COMMANDER MASTER EDITION ACTIVE - KHO: {len(full_fleet)} SP")
+    print(f"🚀 AI COMMANDER READY - KHO: {len(full_fleet)} SP")
     uvicorn.run(app, host="127.0.0.1", port=8000)
