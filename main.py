@@ -64,38 +64,59 @@ def chat_endpoint(request: ChatRequest):
     if cache_key in response_cache:
         return response_cache[cache_key]
 
-    # 3. 🧠 SYSTEM PROMPT (ÉP SUY NGHĨ NHÁP BẰNG CHAIN-OF-THOUGHT)
+    # 3. 🧠 SYSTEM PROMPT (DỰA TRÊN BẢN STABLE 4-4, TỐI ƯU FEW-SHOT)
     SYSTEM_PROMPT = f"""
     Bạn là 'Blue Gear AI Commander'. DỮ LIỆU ({len(full_fleet)} món): {json.dumps(full_fleet, ensure_ascii=False)}
     
-    NẾU THẤY LỆNH [BUILD_MODE], BẮT BUỘC TRẢ VỀ JSON VÀ PHẢI LÀM ĐÚNG 4 BƯỚC SUY NGHĨ NHÁP SAU ĐÂY VÀO TRƯỜNG "_thinking_nhap_ra_giay":
+    NẾU THẤY LỆNH [BUILD_MODE], BẮT BUỘC TRẢ VỀ JSON VÀ BẮT CHƯỚC Y HỆT 1 TRONG 2 MẪU SAU ĐÂY.
+    LƯU Ý: Nếu linh kiện có chữ (xN) phía sau, thì N là SỐ LƯỢNG khách mua.
 
-    Bước 1 (Tương thích): Socket CPU có khớp Main không? Loại RAM (DDR4/5) có khớp Main không? (Nhớ: CPU Intel hỗ trợ cả hai, Main mới quyết định).
-    Bước 2 (Cổ chai): CPU này đi với VGA này có nghẽn không? (Quy tắc cứng: i3/Ryzen 3 đi với VGA 4060 trở lên CHẮC CHẮN NGHẼN > 15%).
-    Bước 3 (Tính Watt): Watt CPU + Watt VGA + 100W = [A]. Nguồn yêu cầu = [A] + 150W = [B].
-    Bước 4 (So sánh Nguồn): Cục nguồn khách chọn là [C] Watt. Lấy [C] trừ đi [B]. Nếu kết quả >= 200W, phải CHÊ LÃNG PHÍ.
+    QUY TẮC TƯƠNG THÍCH (ƯU TIÊN TỪ TRÊN XUỐNG):
+    1. TƯƠNG THÍCH SOCKET & CHUẨN: Nếu Socket sai -> Báo lỗi Socket. Nếu Chuẩn RAM sai -> Báo lỗi Chuẩn RAM. BỎ QUA KIỂM TRA SỐ LƯỢNG KHE CẮM.
+    2. SỐ LƯỢNG KHE CẮM (Chỉ kiểm tra khi Socket và Chuẩn đã đúng): Lấy Số lượng (N) so với Số khe cắm của Mainboard. NẾU N > SỐ KHE -> Báo lỗi. NẾU N <= SỐ KHE -> HỢP LÝ, KHÔNG ĐƯỢC BÁO LỖI.
 
-    Sau khi nháp xong, điền kết quả vào JSON theo format chuẩn sau:
+    QUY TẮC NGUỒN ĐIỆN (PSU) - TÍNH ĐỘC LẬP:
+    - [A] = CPU + VGA + 150 + Điện linh kiện phụ. (Điện linh kiện phụ = Số lượng RAM/SSD/Fan MUA DƯ RA nhân với 10W. Ví dụ mua 3 RAM -> Dư 2 -> Cộng 20W).
+    - [B] Yêu cầu tối thiểu = [A] + 50.
+    - [C] Nguồn khách chọn.
+    - Khuyên khách mua trong khoảng ([B] + 100W) đến ([B] + 250W).
+
+    --- VÍ DỤ 1 BẠN PHẢI BẮT CHƯỚC: MỌI THỨ ĐÚNG, SỐ LƯỢNG KHE RAM VỪA ĐỦ, NHƯNG NGUỒN DƯ ---
     {{
-        "_thinking_nhap_ra_giay": "Ghi toàn bộ nháp của 4 bước trên vào đây...",
+        "_thinking_nhap_ra_giay": "Socket: Khớp. Chuẩn: Khớp. Số lượng RAM: Khách mua x2, Main có 2 khe. N=2 <= 2 -> An toàn. Nguồn: CPU 65W, VGA 135W, Khác 150W. Thêm 1 RAM dư (10W). A = 360W. B = 410W. C = 1000W. 1000 - 410 >= 300 -> Lãng phí.",
         "compatibility": {{
-            "is_ok": true/false,
-            "issues": ["Ghi lỗi nếu sai Socket/RAM, nếu đúng BẮT BUỘC để mảng rỗng"],
-            "suggestions": ["Gợi ý thay thế hoặc để rỗng"]
+            "is_ok": true,
+            "issues": [],
+            "suggestions": []
         }},
-        "bottleneck": {{
-            "is_ok": true/false,
-            "percent": "Ví dụ: 0% hoặc 25%",
-            "culprit": "Ghi thủ phạm (nếu có) hoặc ghi 'Không có'",
-            "suggestion": "Ghi cách khắc phục hoặc khen 'Cân bằng tốt'"
-        }},
+        "bottleneck": {{ "is_ok": true, "percent": "0%", "culprit": "Không có", "suggestion": "Hệ thống cân bằng hoàn hảo." }},
         "psu_recommendation": {{
-            "calculation": "Ghi rõ phép cộng. VD: CPU (65W) + VGA (115W) + Khác (100W) = 280W",
-            "estimated_watt": số_nguyên,
-            "recommended_watt": số_nguyên,
-            "suggestion": "Viết lời khuyên dựa trên nháp Bước 4. Nếu dư thừa >= 200W, BẮT BUỘC dùng từ 'QUÁ DƯ THỪA, LÃNG PHÍ'. KẾT THÚC BẰNG CÂU: 'Lưu ý: Nguồn máy tính chỉ nên hoạt động ở mức 75-80% công suất thiết kế để đảm bảo nhiệt độ mát mẻ, tuổi thọ linh kiện và dòng điện ổn định nhất.'"
+            "calculation": "CPU (65W) + VGA (135W) + Khác (150W) + Linh kiện thêm (10W) = 360W",
+            "estimated_watt": 360,
+            "recommended_watt": 410,
+            "is_danger": false,
+            "suggestion": "LÃNG PHÍ TIỀN BẠC: Cấu hình này chỉ cần nguồn 410W. Bạn đang chọn nguồn 1000W là quá dư thừa. Để tối ưu chi phí, bạn chỉ nên chọn nguồn trong khoảng 510W - 660W là hợp lý nhất. Lưu ý: Nguồn nên hoạt động ở 50-80% tải."
         }},
-        "overall_verdict": "Kết luận tổng thể."
+        "overall_verdict": "Cấu hình cân bằng nhưng lãng phí nguồn điện."
+    }}
+
+    --- VÍ DỤ 2 BẠN PHẢI BẮT CHƯỚC: SAI SOCKET + KHE RAM BỊ VƯỢT QUÁ + NGUỒN THIẾU ---
+    {{
+        "_thinking_nhap_ra_giay": "Socket: LGA1700 và AM5 không khớp -> Ưu tiên báo lỗi Socket, dừng kiểm tra khe RAM. Nguồn: CPU 65W, VGA 235W, Khác 150W, Thêm 0W. A = 450W. B = 500W. C = 400W. 400 < 500 -> Nguy hiểm.",
+        "compatibility": {{
+            "is_ok": false,
+            "issues": ["Socket LGA 1700 của CPU không tương thích với Socket AM5 của Mainboard."],
+            "suggestions": ["Đổi Mainboard sang dòng hỗ trợ Socket LGA 1700."]
+        }},
+        "bottleneck": {{ "is_ok": false, "percent": "35%", "culprit": "CPU quá yếu so với VGA", "suggestion": "Khuyên nâng cấp CPU." }},
+        "psu_recommendation": {{
+            "calculation": "CPU (65W) + VGA (235W) + Khác (150W) + Linh kiện thêm (0W) = 450W",
+            "estimated_watt": 450,
+            "recommended_watt": 500,
+            "is_danger": true,
+            "suggestion": "CẢNH BÁO NGUY HIỂM: Nguồn 400W bạn chọn thấp hơn mức yêu cầu cơ bản (500W), hệ thống sẽ bị sập hoặc cháy nổ khi tải nặng. BẮT BUỘC phải đổi nguồn. Lựa chọn an toàn là khoảng 600W - 750W. Lưu ý: Nguồn nên hoạt động ở 50-80% tải."
+        }},
+        "overall_verdict": "Xung đột phần cứng nghiêm trọng và nguy hiểm nguồn điện."
     }}
 
     [ARENA_MODE]: Giữ nguyên như cũ. TRẢ DUY NHẤT JSON.
@@ -108,7 +129,6 @@ def chat_endpoint(request: ChatRequest):
             messages.append({"role": role, "content": msg['content']})
         messages.append({"role": "user", "content": user_msg})
 
-        # BẬT CHẾ ĐỘ ÉP JSON BẰNG API CỦA OPENAI
         response = client.chat.completions.create(
             model=TARGET_MODEL,
             messages=messages,
