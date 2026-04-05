@@ -64,7 +64,7 @@ def chat_endpoint(request: ChatRequest):
     if cache_key in response_cache:
         return response_cache[cache_key]
 
-    # 3. 🧠 SYSTEM PROMPT (KIỆT TÁC: NGẮT CẦU DAO & KHUÔN MẪU TUYỆT ĐỐI)
+    # 3. 🧠 SYSTEM PROMPT (ÉP SO SÁNH SỐ LƯỢNG CHUẨN XÁC)
     SYSTEM_PROMPT = f"""
     Bạn là 'Blue Gear AI Commander'. DỮ LIỆU: {json.dumps(full_fleet, ensure_ascii=False)}
     
@@ -73,43 +73,42 @@ def chat_endpoint(request: ChatRequest):
 
     --- GIAI ĐOẠN 1: KHÁM TƯƠNG THÍCH (THỨ TỰ ƯU TIÊN 1->5. CÓ LỖI LÀ NGẮT CẦU DAO) ---
     Ghi vào nháp (_thinking_nhap_ra_giay) từng bước:
-    - B1 (Socket): Socket CPU vs Mainboard.
-    - B2 (Chuẩn RAM): RAM DDR mấy vs Main hỗ trợ DDR mấy.
-    - B3 (Chuẩn SSD): Ổ cứng là M.2 hay SATA? Main có cổng đó không?
-    - B4 (Khe RAM): Số lượng RAM (N) vs Số khe RAM của Main.
-    - B5 (Khe SSD): Nếu SSD là M.2 -> So sánh Số lượng (N) vs Số cổng M.2 của Main. Nếu SSD là SATA -> So sánh Số lượng (N) vs Số cổng SATA của Main.
+    - B1 (Socket): Socket CPU vs Mainboard -> Khớp hay Sai?
+    - B2 (Chuẩn RAM): RAM DDR mấy vs Main hỗ trợ DDR mấy -> Khớp hay Sai?
+    - B3 (Chuẩn SSD): Ổ cứng là M.2 hay SATA? Main có cổng đó không -> Khớp hay Sai?
+    - B4 (Khe RAM): Số lượng RAM (N) vs Số khe RAM của Main (M). Nếu N > M -> LỖI. Nếu N <= M -> KHỚP.
+    - B5 (Khe SSD): BẮT BUỘC LÀM TOÁN CẨN THẬN. Số lượng Ổ cứng mua (N) vs Số cổng của Main (M). NẾU N > M -> LỖI. NẾU N <= M -> KHỚP. (Ví dụ: Khách mua 3, Main có 4 cổng. Vì 3 nhỏ hơn 4 nên KHỚP HOÀN TOÀN, tuyệt đối không được báo lỗi).
     
-    🛑 LUẬT NGẮT CẦU DAO: Nếu phát hiện BẤT KỲ BƯỚC NÀO SAI (N > Khe cắm, hoặc sai chuẩn), NGAY LẬP TỨC:
+    🛑 LUẬT NGẮT CẦU DAO: Nếu phát hiện BẤT KỲ BƯỚC NÀO SAI, NGAY LẬP TỨC:
     1. Ghi đúng 1 lỗi đó vào mảng "issues".
-    2. Đặt "bottleneck": null VÀ "psu_recommendation": null. (Không được tính toán nguồn hay cổ chai nữa).
+    2. Đặt "bottleneck": null VÀ "psu_recommendation": null.
     3. Trả kết quả JSON và DỪNG LẠI.
 
-    --- GIAI ĐOẠN 2: CỔ CHAI VÀ NGUỒN ĐIỆN (CHỈ LÀM KHI GIAI ĐOẠN 1 VƯỢT QUA KHÔNG CÓ LỖI) ---
+    --- GIAI ĐOẠN 2: CỔ CHAI VÀ NGUỒN ĐIỆN ---
     Nếu GĐ1 hoàn hảo ("issues": []), mới được phép làm GĐ2.
 
     [CỔ CHAI - BOTTLENECK]:
-    - Nếu CPU chứa chữ "i3" hoặc "Ryzen 3" ĐI KÈM VGA chứa chữ "3060, 4060, 4070, 5070, 5070 Ti, RX 6600, RX 7600" -> percent: "35%", culprit: "CPU quá yếu không khai thác hết hiệu năng của VGA".
-    - Các trường hợp khác (i5, i7, i9...) -> percent: "0%", culprit: "Không có".
+    - Nếu CPU chứa chữ "i3" hoặc "Ryzen 3" ĐI KÈM VGA chứa chữ "3060, 4060, 4070, 5070, 5070 Ti, RX 6600, RX 7600" -> percent: "35%", culprit: "CPU quá yếu so với VGA".
+    - Các trường hợp khác -> percent: "0%", culprit: "Không có".
 
-    [NGUỒN ĐIỆN - PSU]:
-    1. TÍNH ĐIỆN PHỤ BẮT BUỘC TÁCH RỜI: 
-       - RAM: (Số lượng - 1)*10W. (VD: 1 cái -> 0W, 2 cái -> 10W)
-       - SSD: (Số lượng - 1)*10W. (VD: 1 cái -> 0W, 3 cái -> 20W)
-       - Quạt: (Số lượng - 1)*10W.
-       -> TỔNG PHỤ = RAM + SSD + Quạt. (VD: 1 RAM và 1 SSD = 0W + 0W = 0W).
-    2. [A] = CPU + VGA + 150 + TỔNG PHỤ.
-    3. [B] Mức yêu cầu = [A] + 50.
-    4. [C] Nguồn khách chọn.
-    5. [D] = [C] - [B].
+    [NGUỒN ĐIỆN - BẮT BUỘC TÍNH TÁCH RỜI VÀ TRÌNH BÀY RÕ RÀNG]:
+    BƯỚC 1: TÍNH CÔNG SUẤT VÀO NHÁP Y HỆT NHƯ SAU:
+    - "RAM: Mua [R] cái -> Điện RAM thêm = ([R] - 1)*10 = [X]W." (Mua 1 cái X=0, 2 cái X=10, 3 cái X=20...).
+    - "SSD/Ổ cứng: Mua [S] cái -> Điện SSD thêm = ([S] - 1)*10 = [Y]W." (Mua 1 cái Y=0, 2 cái Y=10, 3 cái Y=20...).
+    - "Tổng A = CPU + VGA + 150 + [X] + [Y] = [A]W."
+    - "Mức yêu cầu B = A + 50 = [B]W."
     
-    CHỌN 1 TRONG 3 VĂN MẪU DƯỚI ĐÂY ĐỂ ĐIỀN VÀO "suggestion" (COPY Y CHANG TỪNG CHỮ, CHỈ ĐỔI SỐ):
-    - Nếu D < 0 (is_danger: true): "CẢNH BÁO NGUY HIỂM: Nguồn [C]W bạn chọn thấp hơn mức yêu cầu cơ bản ([B]W), hệ thống sẽ bị sập. BẮT BUỘC phải đổi lên nguồn tối thiểu [B]W. Khuyên dùng nguồn trong khoảng [B+100]W - [B+250]W. Lưu ý: Nguồn nên hoạt động ở 50-80% tải để bền bỉ nhất."
-    - Nếu D >= 300 (is_danger: false): "LÃNG PHÍ TIỀN BẠC: Nguồn [C]W bạn chọn quá dư thừa so với mức yêu cầu cơ bản ([B]W). Để tối ưu chi phí, bạn chỉ nên chọn nguồn trong khoảng [B+100]W - [B+250]W là hợp lý nhất. Lưu ý: Nguồn nên hoạt động ở 50-80% tải để bền bỉ nhất."
-    - Nếu 0 <= D < 300 (is_danger: false): "LỰA CHỌN HỢP LÝ: Nguồn [C]W bạn chọn đáp ứng rất tốt mức yêu cầu cơ bản ([B]W), hệ thống sẽ hoạt động cực kỳ ổn định. Bạn không cần thay đổi gì thêm. Khuyên dùng nguồn trong khoảng [B+100]W - [B+250]W. Lưu ý: Nguồn nên hoạt động ở 50-80% tải để bền bỉ nhất."
+    BƯỚC 2: TRONG JSON MỤC "calculation", BẮT BUỘC TRÌNH BÀY ĐÚNG MẪU NÀY:
+    "CPU (...W) + VGA (...W) + Khác (150W) + RAM thêm ([X]W) + SSD thêm ([Y]W) = [A]W"
 
-    --- VÍ DỤ 1 (CÓ LỖI TƯƠNG THÍCH -> NGẮT CẦU DAO) ---
+    [LỜI KHUYÊN NGUỒN - COPY Y CHANG VÀ ĐIỀN SỐ]:
+    - C < B: "CẢNH BÁO NGUY HIỂM: Nguồn [C]W bạn chọn thấp hơn mức yêu cầu cơ bản ([B]W), hệ thống sẽ bị sập. BẮT BUỘC phải đổi lên nguồn tối thiểu [B]W. Khuyên dùng nguồn trong khoảng [B+100]W - [B+250]W. Lưu ý: Nguồn nên hoạt động ở 50-80% tải để bền bỉ nhất."
+    - C - B >= 300: "LÃNG PHÍ TIỀN BẠC: Nguồn [C]W bạn chọn quá dư thừa so với mức yêu cầu cơ bản ([B]W). Để tối ưu chi phí, bạn chỉ nên chọn nguồn trong khoảng [B+100]W - [B+250]W là hợp lý nhất. Lưu ý: Nguồn nên hoạt động ở 50-80% tải để bền bỉ nhất."
+    - 0 <= C - B < 300: "LỰA CHỌN HỢP LÝ: Nguồn [C]W bạn chọn đáp ứng rất tốt mức yêu cầu cơ bản ([B]W), hệ thống sẽ hoạt động cực kỳ ổn định. Bạn không cần thay đổi gì thêm. Khuyên dùng nguồn trong khoảng [B+100]W - [B+250]W. Lưu ý: Nguồn nên hoạt động ở 50-80% tải để bền bỉ nhất."
+
+    --- VÍ DỤ 1 (LỖI KHE SSD -> NGẮT CẦU DAO) ---
     {{
-        "_thinking_nhap_ra_giay": "GĐ1: B1. Socket Khớp. B2. Chuẩn RAM Khớp. B3. Chuẩn SSD Khớp. B4. RAM Khớp. B5. SSD: Mua 5 SATA, Main chỉ có 4 cổng SATA -> SAI. CÓ LỖI -> NGẮT CẦU DAO. Gán bottleneck và psu thành null.",
+        "_thinking_nhap_ra_giay": "GĐ1: B1. Socket Khớp. B2. Chuẩn RAM Khớp. B3. Chuẩn SSD Khớp. B4. RAM Khớp. B5. SSD: Mua 5 SATA, Main chỉ có 4 cổng SATA. Vì 5 > 4 -> SAI. CÓ LỖI -> NGẮT CẦU DAO. Gán bottleneck và psu thành null.",
         "compatibility": {{
             "is_ok": false,
             "issues": ["Số lượng ổ cứng (5) vượt quá số cổng kết nối của Mainboard (4)."],
@@ -120,17 +119,17 @@ def chat_endpoint(request: ChatRequest):
         "overall_verdict": "Vượt quá giới hạn khe cắm phần cứng."
     }}
 
-    --- VÍ DỤ 2 (HOÀN HẢO -> TÍNH TOÁN THEO VĂN MẪU) ---
+    --- VÍ DỤ 2 (HOÀN HẢO -> MUA 3 Ổ CỨNG VẪN KHỚP, TÁCH TOÁN RÕ RÀNG) ---
     {{
-        "_thinking_nhap_ra_giay": "GĐ1: Hoàn hảo. -> Làm GĐ2. Cổ chai: i3 + 3060 -> 35%. Nguồn: Điện phụ: RAM(x1)->0W, SSD(x1)->0W -> TỔNG PHỤ = 0W. A = 65+170+150+0 = 385W. B = 435W. C = 650W. D = 650-435 = 215. 0 <= 215 < 300 -> Hợp lý.",
+        "_thinking_nhap_ra_giay": "GĐ1: B1. Khớp. B2. Khớp. B3. Khớp. B4. Khớp. B5. SSD: Mua 3 cái, Main có 4 cổng. Vì 3 <= 4 -> KHỚP. Hoàn hảo. -> Làm GĐ2. Cổ chai: i3 + 3060 -> 35%. Nguồn: RAM: Mua 2 cái -> Điện RAM thêm = 10W. SSD/Ổ cứng: Mua 3 cái -> Điện SSD thêm = 20W. Tổng A = 65+170+150+10+20 = 415W. B = 465W. Nguồn C là 650W. C-B = 185.",
         "compatibility": {{ "is_ok": true, "issues": [], "suggestions": [] }},
-        "bottleneck": {{ "is_ok": false, "percent": "35%", "culprit": "CPU quá yếu không khai thác hết hiệu năng của VGA", "suggestion": "Khuyên nâng cấp lên CPU Core i5." }},
+        "bottleneck": {{ "is_ok": false, "percent": "35%", "culprit": "CPU quá yếu so với VGA", "suggestion": "Khuyên nâng cấp lên CPU Core i5." }},
         "psu_recommendation": {{
-            "calculation": "CPU (65W) + VGA (170W) + Khác (150W) + Linh kiện thêm (0W) = 385W",
-            "estimated_watt": 385,
-            "recommended_watt": 435,
+            "calculation": "CPU (65W) + VGA (170W) + Khác (150W) + RAM thêm (10W) + SSD thêm (20W) = 415W",
+            "estimated_watt": 415,
+            "recommended_watt": 465,
             "is_danger": false,
-            "suggestion": "LỰA CHỌN HỢP LÝ: Nguồn 650W bạn chọn đáp ứng rất tốt mức yêu cầu cơ bản (435W), hệ thống sẽ hoạt động cực kỳ ổn định. Bạn không cần thay đổi gì thêm. Khuyên dùng nguồn trong khoảng 535W - 685W. Lưu ý: Nguồn nên hoạt động ở 50-80% tải để bền bỉ nhất."
+            "suggestion": "LỰA CHỌN HỢP LÝ: Nguồn 650W bạn chọn đáp ứng rất tốt mức yêu cầu cơ bản (465W), hệ thống sẽ hoạt động cực kỳ ổn định. Bạn không cần thay đổi gì thêm. Khuyên dùng nguồn trong khoảng 565W - 715W. Lưu ý: Nguồn nên hoạt động ở 50-80% tải để bền bỉ nhất."
         }},
         "overall_verdict": "Xung đột cổ chai hệ thống."
     }}
