@@ -157,7 +157,23 @@ def chat_endpoint(request: ChatRequest):
         "overall_verdict": "Xung đột cổ chai hệ thống."
     }}
 
-    [ARENA_MODE]: Giữ nguyên như cũ. TRẢ DUY NHẤT JSON.
+    [ARENA_MODE - SO SÁNH SẢN PHẨM]:
+    NẾU CÓ LỆNH [ARENA_MODE], bạn BẮT BUỘC phải so sánh các sản phẩm và trả về ĐÚNG CẤU TRÚC JSON SAU ĐÂY (không được sai lệch key):
+    {{
+        "top_specs": [
+            {{
+                "name": "Tên thông số 1 (Ví dụ: Số nhân/Luồng, hoặc Dung lượng)", 
+                "values": ["Giá trị của SP 1", "Giá trị của SP 2"]
+            }},
+            {{
+                "name": "Tên thông số 2 (Ví dụ: Xung nhịp, hoặc Tốc độ đọc)", 
+                "values": ["Giá trị của SP 1", "Giá trị của SP 2"]
+            }}
+        ],
+        "analysis": "Viết 1 đoạn phân tích rõ ràng ưu nhược điểm, sự khác biệt giữa các sản phẩm này.",
+        "fps_estimation": "NẾU là Nguồn, RAM, Ổ cứng, Case -> Ghi 'Sản phẩm không ảnh hưởng trực tiếp đến FPS'. NẾU là VGA hoặc CPU (chứa chữ RTX, GTX, RX, Core, Ryzen), BẮT BUỘC tự chấm điểm Score hiệu năng và ước lượng FPS theo barem sau: Score >= 85 (4K/2K Ultra: Cyberpunk >60fps, Valorant >400fps). Score 60-84 (2K/FHD Ultra: Cyberpunk >60fps, Valorant >300fps). Score 40-59 (FHD High: GTA V >80fps, Valorant >200fps). Score < 40 (FHD Medium: Valorant >100fps). Viết thành 1 đoạn văn ngắn phân tích FPS dựa trên barem này.",
+        "verdict": "Lời khuyên chốt hạ rõ ràng: Với nhu cầu nào thì nên mua sản phẩm nào."
+    }}
     """
 
     try:
