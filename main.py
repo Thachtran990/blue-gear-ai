@@ -125,6 +125,14 @@ def chat_endpoint(request: ChatRequest):
         "bottleneck": null,
         "psu_recommendation": null,
         "overall_verdict": "Vượt quá giới hạn khe cắm phần cứng."
+        "ai_report": {{
+            "hasCompatibilityError": true,
+            "compatibilityMsg": "Lỗi nghiêm trọng: Socket LGA1700 của CPU không tương thích với Socket AM5 của Mainboard.",
+            "bottleneck": "",
+            "powerFormula": "",
+            "powerEval": "",
+            "verdict": ""
+        }}
     }}
 
     --- VÍ DỤ 2 (MUA RYZEN 9 + 3060 -> HOÀN TOÀN KHÔNG NGHẼN (IS_OK=TRUE) -> NGUỒN RƠI VÀO TRƯỜNG HỢP 2) ---
@@ -140,6 +148,14 @@ def chat_endpoint(request: ChatRequest):
             "suggestion": "HỢP LÝ: Nguồn 600W bạn chọn đáp ứng rất tốt mức yêu cầu cơ bản (495W)."
         }},
         "overall_verdict": "Cấu hình hợp lý."
+        "ai_report": {{
+            "hasCompatibilityError": false,
+            "compatibilityMsg": "",
+            "bottleneck": "CPU và VGA phối hợp hoàn hảo, hoàn toàn không bị nghẽn cổ chai.",
+            "powerFormula": "CPU (125W) + VGA (170W) + Phụ kiện (150W) = Đề nghị tối thiểu 495W",
+            "powerEval": "HỢP LÝ: Nguồn 600W đáp ứng xuất sắc, hệ thống chạy cực kỳ ổn định.",
+            "verdict": "Cấu hình cân bằng, tối ưu chi phí. Dư sức chiến game mượt mà ở phân khúc này!"
+        }}
     }}
 
     --- VÍ DỤ 3 (CPU i9 + VGA 1660Ti -> NGHẼN CỔ CHAI VGA -> NGUỒN TRƯỜNG HỢP 3 PHẢI GHI FULL CHỮ) ---
@@ -155,7 +171,20 @@ def chat_endpoint(request: ChatRequest):
             "suggestion": "DƯ DẢ & AN TOÀN: Nguồn 1000W bạn chọn rất tuyệt vời, dư sức gánh hệ thống và thoải mái nâng cấp về sau. Tuy nhiên hơi lãng phí, bạn có thể giảm xuống khoảng 150W - 250W để tối ưu chi phí."
         }},
         "overall_verdict": "Xung đột cổ chai hệ thống."
+        "ai_report": {{
+            "hasCompatibilityError": false,
+            "compatibilityMsg": "",
+            "bottleneck": "CẢNH BÁO: VGA quá yếu so với sức mạnh của CPU (Nghẽn 30%). Lời khuyên nâng cấp VGA lên RTX 3060 trở lên.",
+            "powerFormula": "CPU (125W) + VGA (120W) + Phụ kiện (180W) = Đề nghị tối thiểu 475W",
+            "powerEval": "DƯ DẢ & AN TOÀN: Nguồn 1000W chạy rất nhàn, nhưng hơi lãng phí chi phí.",
+            "verdict": "Cần cân đối lại cấu hình. Hãy nâng cấp VGA để phát huy hết sức mạnh của chip i9!"
+        }}
     }}
+
+    --- [YÊU CẦU BỔ SUNG CHO BUILD_MODE]: XUẤT BÁO CÁO AI_REPORT ĐỂ IN PHIẾU ---
+    Bên cạnh các object bắt buộc ở trên, BẮT BUỘC sinh thêm 1 object "ai_report" nằm ở cấp ngoài cùng của JSON.
+    - NẾU GĐ1 LỖI (NGẮT CẦU DAO): "hasCompatibilityError": true, "compatibilityMsg": "[Ghi rõ lỗi tương thích]", "bottleneck": "", "powerFormula": "", "powerEval": "", "verdict": ""
+    - NẾU GĐ1 VÀ GĐ2 HOÀN HẢO: "hasCompatibilityError": false, "compatibilityMsg": "", "bottleneck": "[Viết 1 câu nhận xét cổ chai]", "powerFormula": "[Chép lại công thức phép tính tổng Watt]", "powerEval": "[Nhận xét nguồn điện]", "verdict": "[1 câu lời khuyên chốt sale thật uy tín]"
 
     [ARENA_MODE - SO SÁNH SẢN PHẨM]:
     NẾU CÓ LỆNH [ARENA_MODE], bạn BẮT BUỘC phải so sánh các sản phẩm và trả về ĐÚNG CẤU TRÚC JSON SAU ĐÂY (không được sai lệch key):
@@ -174,25 +203,75 @@ def chat_endpoint(request: ChatRequest):
         "fps_estimation": "NẾU là Nguồn, RAM, Ổ cứng, Case -> Ghi 'Sản phẩm không ảnh hưởng trực tiếp đến FPS'. NẾU là VGA hoặc CPU (chứa chữ RTX, GTX, RX, Core, Ryzen), BẮT BUỘC tự chấm điểm Score hiệu năng và ước lượng FPS theo barem sau: Score >= 85 (4K/2K Ultra: Cyberpunk >60fps, Valorant >400fps). Score 60-84 (2K/FHD Ultra: Cyberpunk >60fps, Valorant >300fps). Score 40-59 (FHD High: GTA V >80fps, Valorant >200fps). Score < 40 (FHD Medium: Valorant >100fps). Viết thành 1 đoạn văn ngắn phân tích FPS dựa trên barem này.",
         "verdict": "Lời khuyên chốt hạ rõ ràng: Với nhu cầu nào thì nên mua sản phẩm nào."
     }}
+
+    [AUTO_BUILD_MODE - TỰ ĐỘNG LÊN CẤU HÌNH TỪ KHO]:
+    NẾU CÓ LỆNH [AUTO_BUILD_MODE], bạn BẮT BUỘC thực hiện quy trình "Tư duy 4 bước" sau:
+
+    GĐ1 - QUÉT TỪ KHÓA (_thinking_nhap_ra_giay): 
+    - Tìm trong full_fleet tất cả linh kiện chứa từ khóa khách yêu cầu (Ví dụ: "Trắng", "White"). 
+    - BẮT BUỘC liệt kê ít nhất 2 vỏ case màu trắng nếu có.
+
+    GĐ2 - LÊN BẢN THẢO & LÀM TOÁN (_thinking_nhap_ra_giay):
+    - Chọn linh kiện từ kho. Ghi rõ: [Tên SP] - [Giá].
+    - THỰC HIỆN PHÉP CỘNG TỪNG MÓN: Món 1 + Món 2 = ...; + Món 3 = ... 
+    - Nếu tổng vượt ngân sách khách đưa -> Bỏ món đắt nhất, chọn món rẻ hơn trong kho và cộng lại.
+
+    GĐ3 - KIỂM TRA ĐẠO ĐỨC (THÀNH THẬT):
+    - Tuyệt đối không được dùng linh kiện ngoài full_fleet.
+    - Không được tự ý sửa giá SP trong kho. 
+    - Nếu ngân sách quá thấp, báo lỗi ngay ở bước này.
+
+    GĐ4 - TRÌNH BÀY PHẢN HỒI:
+    - [Nhận xét ngân sách]: Đánh giá độ khó/dễ.
+    - [Danh sách linh kiện]: Phải khớp 100% với GĐ2.
+    - [Hiệu năng (Score)]: Soi 'score' của VGA trong kho. Dự đoán FPS (Valorant/AAA) và Settings cụ thể.
+    - [Tổng cộng]: Con số cuối cùng phải chính xác tuyệt đối.
+
+
     """
 
     try:
-        messages = [{"role": "system", "content": SYSTEM_PROMPT}]
+        # 🚀 1. TẠO CÔNG TẮC TỰ ĐỘNG
+        is_json_mode = "[ARENA_MODE]" in user_msg or "[BUILD_MODE]" in user_msg
+
+        # 🚀 2. ĐIỀU HƯỚNG SYSTEM PROMPT DYNAMIC
+        # Nếu chat bình thường, ta ÉP nó quên cái luật JSON đi và trả lời như con người
+        dynamic_system_prompt = SYSTEM_PROMPT
+        if not is_json_mode:
+            dynamic_system_prompt += "\n\n[LỆNH TỐI CAO]: ĐỐI VỚI CÂU HỎI NÀY, BẮT BUỘC TRẢ LỜI BẰNG VĂN BẢN THƯỜNG (PLAIN TEXT) MƯỢT MÀ. TUYỆT ĐỐI KHÔNG ĐƯỢC DÙNG ĐỊNH DẠNG JSON HAY TRẢ VỀ { 'answer': ... }."
+
+        messages = [{"role": "system", "content": dynamic_system_prompt}]
+        
         for msg in request.history[-6:]:
             role = "assistant" if msg['role'] == "model" else "user"
             messages.append({"role": role, "content": msg['content']})
         messages.append({"role": "user", "content": user_msg})
 
-        response = client.chat.completions.create(
-            model=TARGET_MODEL,
-            messages=messages,
-            temperature=0,
-            response_format={ "type": "json_object" } 
-        )
-        
+        # 🚀 3. ĐÓNG GÓI THAM SỐ API
+        api_params = {
+            "model": TARGET_MODEL,
+            "messages": messages,
+            "temperature": 0 if is_json_mode else 0.4, # Chat thường cho 0.7 để nó nói chuyện tự nhiên, sáng tạo hơn
+        }
+
+        if is_json_mode:
+            api_params["response_format"] = { "type": "json_object" }
+
+        # 🚀 4. PHÓNG REQUEST
+        response = client.chat.completions.create(**api_params)
         answer = response.choices[0].message.content
         
-        if ("[ARENA_MODE]" in user_msg or "[BUILD_MODE]" in user_msg) and "```" in answer:
+        # 🚀 5. BỘ LỌC DỰ PHÒNG (FALLBACK)
+        # Lỡ con AI nó "ngáo" vẫn nhả JSON khi chat thường, ta dùng Python bóc tách lấy text luôn
+        if not is_json_mode:
+            try:
+                parsed_ans = json.loads(answer)
+                if "answer" in parsed_ans:
+                    answer = parsed_ans["answer"]
+            except:
+                pass # Nếu nó đã là text thường (ko parse được JSON) thì bỏ qua, quá tốt!
+
+        if is_json_mode and "```" in answer:
             answer = answer.replace("```json", "").replace("```", "").strip()
 
         bad_domains = ["[https://example.com](https://example.com)", "[http://example.com](http://example.com)", "[https://bluegear.com](https://bluegear.com)", "localhost:3000", "http://localhost:8000"]
