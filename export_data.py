@@ -67,12 +67,22 @@ def export_to_json():
             # Sử dụng bộ lọc "lì lợm" để đào dữ liệu
             ai_logic = mine_data(specs_dict, p_name, cat)
 
+            # 📸 🚀 LẤY LINK ẢNH TỪ MONGODB
+            # Giả sử trong DB của mày trường ảnh tên là 'images' (dạng mảng) hoặc 'image' (dạng chuỗi)
+            db_images = p.get("images", []) 
+            if isinstance(db_images, list) and len(db_images) > 0:
+                img_url = db_images[0] # Lấy ảnh đầu tiên trong mảng
+            else:
+                # Nếu không phải mảng thì lấy trường 'image', nếu không có nữa thì gán tạm link mẫu
+                img_url = p.get("image", "https://res.cloudinary.com/dvcugvh5t/image/upload/v1773906360/GamingGearShop/psinu6ww53c2vucpfswu.jpg")
+
             item = {
                 "slug": p.get("slug") or slugify(p_name),
                 "name": p_name,
                 "category": cat,
                 "price": p.get("price", 0),
                 "brand": p.get("brand"),
+                "image": img_url, # 🎯 BƠM LINK ẢNH CLOUDINARY VÀO ĐÂY
                 "technical_details": specs_dict,
                 "ai_logic": ai_logic # 🎯 Dữ liệu vàng cho AI làm toán
             }

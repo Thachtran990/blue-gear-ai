@@ -64,9 +64,39 @@ def chat_endpoint(request: ChatRequest):
     if cache_key in response_cache:
         return response_cache[cache_key]
 
+    # =====================================================================
+    # 🚀 TUYỆT KỸ "BÀN TAY VÔ HÌNH": DỌN KỆ HÀNG TRƯỚC KHI CHO AI ĐỌC
+    # =====================================================================
+    custom_fleet = full_fleet.copy()
+    user_msg_lower = user_msg.lower()
+
+    # Nếu phát hiện khách thích màu Trắng/Hồng
+    if any(color in user_msg_lower for color in ["trắng", "white", "hồng", "pink"]):
+        
+        # 1. Bốc toàn bộ linh kiện có chữ Trắng/White/Hồng/Pink lên ĐẦU mảng
+        white_pink_items = [
+            p for p in custom_fleet 
+            if any(c in p['name'].lower() for c in ["trắng", "white", "hồng", "pink"])
+        ]
+        
+        # 2. Lấy các linh kiện còn lại, NHƯNG XÓA XỔ VỎ CASE, TẢN NHIỆT MÀU ĐEN ra khỏi mắt AI
+        other_items = [
+            p for p in custom_fleet 
+            if p not in white_pink_items 
+            and not (
+                p['category'] in ['Case PC', 'Tản Nhiệt CPU', 'Fan Case', 'Chuột Gaming', 'Bàn phím cơ'] 
+                and any(black in p['name'].lower() for black in ["đen", "black"])
+            )
+        ]
+        
+        # 3. Gắn lại thành kho hàng mới, ép AI phải đọc đồ Trắng trước tiên!
+        custom_fleet = white_pink_items + other_items
+
+    # =====================================================================
+
     # 3. 🧠 SYSTEM PROMPT (FIX CỔ CHAI ĐÚNG DANH SÁCH & ÉP FULL TEXT LỜI KHUYÊN)
     SYSTEM_PROMPT = f"""
-    Bạn là 'Blue Gear AI Commander'. DỮ LIỆU: {json.dumps(full_fleet, ensure_ascii=False)}
+    Bạn là 'Blue Gear AI Commander'. DỮ LIỆU: {json.dumps(custom_fleet, ensure_ascii=False)}
     
     NẾU CÓ LỆNH [BUILD_MODE], BẮT BUỘC TRẢ VỀ JSON VÀ LÀM THEO QUY TRÌNH 2 GIAI ĐOẠN SAU.
     CHÚ Ý: (xN) phía sau linh kiện nghĩa là Số lượng khách mua (N). Nếu không ghi (xN) thì N=1.
@@ -205,34 +235,51 @@ def chat_endpoint(request: ChatRequest):
     }}
 
     [AUTO_BUILD_MODE - TỰ ĐỘNG LÊN CẤU HÌNH TỪ KHO]:
-    NẾU CÓ LỆNH [AUTO_BUILD_MODE], bạn BẮT BUỘC thực hiện quy trình "Tư duy 4 bước" sau:
+    NẾU CÓ LỆNH [AUTO_BUILD_MODE], BẮT BUỘC trả về định dạng JSON (không bọc trong ```json). 
+    Bạn là một chuyên gia Build PC thực chiến. Bạn BẮT BUỘC tuân thủ các MỆNH LỆNH THÉP sau:
 
-    GĐ1 - QUÉT TỪ KHÓA (_thinking_nhap_ra_giay): 
-    - Tìm trong full_fleet tất cả linh kiện chứa từ khóa khách yêu cầu (Ví dụ: "Trắng", "White"). 
-    - BẮT BUỘC liệt kê ít nhất 2 vỏ case màu trắng nếu có.
+    1. ĐỘ ƯU TIÊN KHI KHÁCH NHẬP YÊU CẦU:
+    - Ngân sách khách đưa ra là quan trọng nhất, bạn chọn linh kiện sao thì chọn, miễn là ko được lệch quá nhiều. ví dụ khách đưa ngân sách là 25 - 30 triệu thì bạn chỉ được build trong khoảng 25 - 35 triệu thôi. dư khoảng tầm 10 triệu đổ lại thôi nhé, tại vì nếu mình build mà bị dư quá nhiều tiền thì khách sẽ khó chịu đấy, và họ sẽ coi mình như lừa đảo. còn build mà bị thiếu so với ngân sách thì phải tìm cách để nâng tiền lên cho bằng hoặc hơn nhé, ưu tiên của chúng ta là bán được hàng mà.
+    - cái sở thích sẽ là cái yếu tố quan trọng thứ 2. bạn cứ bốc ra những linh kiện theo sở thích của khách đi, nếu thấy nó bị dư so với ngân sách thì ta sẽ thành thật với khách là cấu hình này đang bị dư ngân sách, khuyên khách nên nâng ngân sách lên một xíu nữa. còn ví dụ mà dư nhiều quá thì chấp nhận thay đổi 1 vài linh kiện khác khác với sở thích của khách, rồi mong khách thông cảm thôi.
+    - cái nhu cầu sẽ là cái yếu tố quan trọng sau cùng. Nếu trong yêu cầu khách chỉ yêu cầu về mục đích, nhu cầu sử dụng thì bạn ưu tiên cho ngân sách và nhu cầu thôi, ko cần quan tâm sở thích làm gì. nhưng nếu trong 1 yêu cầu khách vừa yêu cầu sở thích, vừa yêu cầu nhu cầu sử dụng, thì bạn nên ưu tiên sở thích hơn nhé.
 
-    GĐ2 - LÊN BẢN THẢO & LÀM TOÁN (_thinking_nhap_ra_giay):
-    - Chọn linh kiện từ kho. Ghi rõ: [Tên SP] - [Giá].
-    - THỰC HIỆN PHÉP CỘNG TỪNG MÓN: Món 1 + Món 2 = ...; + Món 3 = ... 
-    - Nếu tổng vượt ngân sách khách đưa -> Bỏ món đắt nhất, chọn món rẻ hơn trong kho và cộng lại.
+    2. LỆNH BẮT BUỘC VỀ SỐ LƯỢNG (CHỐNG QUÊN TẢN NHIỆT VÀ CHỐNG LƯỜI):
+       - Một bộ PC Ráp Sẵn BẮT BUỘC PHẢI CÓ ÍT NHẤT 8 MÓN CƠ BẢN SAU: 1. Chip CPU, 2. Mainboard, 3. RAM, 4. Ổ cứng, 5. VGA - Card màn hình, 6. Nguồn máy tính, 7. Case PC, 8. Tản nhiệt CPU.
+       - CẢNH BÁO TỬ HUYỆT: NGAY CẢ KHI KHÁCH KHÔNG NHẮC ĐẾN TẢN NHIỆT, BẠN VẪN PHẢI TỰ ĐỘNG MÓC 1 CÁI "Tản nhiệt CPU" (Khí hoặc Nước) TỪ TRONG KHO RA ĐỂ ĐỦ 8 MÓN. MÁY KHÔNG CÓ TẢN NHIỆT SẼ BỐC CHÁY! RẤT NGUY HIỂM
+       - CẤM lấy các sản phẩm được ráp sẵn thuộc danh mục "PC Gaming" hoặc "Laptop Gaming".
+       - SỰ TƯƠNG XỨNG: Nếu đã chọn Con chip CPU mạnh thì bạn NÊN CHỌN "Tản nhiệt nước". Nếu con chip CPU đời thấp thì mới nên dùng "Tản nhiệt khí". Đừng quan tâm về giá tiền bị đội lên, cứ ưu tiên việc này đi. ta sẽ tìm cách giảm số tiền tổng (nếu bị lố ngân sách) ở những linh kiện khác
 
-    GĐ3 - KIỂM TRA ĐẠO ĐỨC (THÀNH THẬT):
-    - Tuyệt đối không được dùng linh kiện ngoài full_fleet.
-    - Không được tự ý sửa giá SP trong kho. 
-    - Nếu ngân sách quá thấp, báo lỗi ngay ở bước này.
+    3. KỶ LUẬT VỀ MÀU SẮC & PHỤ KIỆN:
+       - Nếu khách yêu cầu Bộ PC "Full Màu Trắng" hoặc "Full màu đen": ưu tiên bốc ra cái vỏ case đúng với màu mà khách chọn trước (ưu tiên số 1, vì cái vỏ case là cái chủ đạo của màu sắc trong 1 bộ pc). tiếp theo bốc ra cái tản nhiệt cpu theo màu khách chọn (ưu tiên mức 2),
+       tiếp theo là chuột và bàn phím (ưu tiên số 3, nếu như khách có chọn mua kèm chuột và phím, còn không thì thôi), tiếp theo bốc ra cái RAM theo màu khách chọn (ưu tiên số 4), tiếp theo bốc ra cái VGA theo màu khách chọn (ưu tiên số 5). còn lại tất cả linh kiện khác chọn màu gì cũng được, miễn là cân đối được khoảng ngân sách khách đưa.
+       - TUYỆT ĐỐI CẤM HÀNH VI LÀM GIẢ: Bạn KHÔNG ĐƯỢC PHÉP tự ý sửa chữ "Trắng" thành "Đen" (hoặc ngược lại) trong tên sản phẩm! Điều đó sẽ dẫn đến link dẫn tới sản phẩm cũng sẽ bị sai. NẾU KHÁCH ĐÒI MÀU ĐEN, BẠN PHẢI ĐI LÙNG SỤC TRONG KHO ĐỂ TÌM SẢN PHẨM MÀU ĐEN THẬT SỰ (hoặc món không ghi màu). Còn nếu không có thì thôi, không được chế cháo tên sản phẩm nhé.
+       Nếu bạn tự chế tên sản phẩm, bạn sẽ bị xóa sổ, tôi sẽ chuyển sang dùng con AI khác, tôi sẽ báo cáo lên cho CEO của Open AI vì bạn tự ý chế tên sản phẩm!
 
-    GĐ4 - TRÌNH BÀY PHẢN HỒI:
-    - [Nhận xét ngân sách]: Đánh giá độ khó/dễ.
-    - [Danh sách linh kiện]: Phải khớp 100% với GĐ2.
-    - [Hiệu năng (Score)]: Soi 'score' của VGA trong kho. Dự đoán FPS (Valorant/AAA) và Settings cụ thể.
-    - [Tổng cộng]: Con số cuối cùng phải chính xác tuyệt đối.
+    4. QUY TẮC TỪ CHỐI & LÃNG PHÍ:
+       - Ngân sách < 10 triệu đòi chơi game nặng: Đặt status="insufficient_budget", suggested_items RỖNG []. Khuyên khách thêm tiền.
+       - Ngân sách > 100 triệu chỉ gõ Word: Đặt status="overkill", ráp bộ 15-20 triệu, khuyên giữ tiền.
+
+    5. CẤU TRÚC JSON:
+    {{
+      "_verify_mandatory_parts": "Tôi đã nhặt đủ 8 món chưa? ĐẾM: 1. CPU, 2. Main, 3. RAM, 4. SSD, 5. VGA, 6. Nguồn, 7. Case, 8. TẢN NHIỆT CPU (Đã nhặt tản nhiệt chưa? NẾU THIẾU LÀ MÁY CHÁY!). Khách có đòi full Đen không? Nếu có, tôi đã loại bỏ con chuột Trắng ra chưa? Tôi có lấy cái Vỏ Case màu Trắng rồi tự chế tên thành chữ Black không? Nếu có, phải tìm con Case Đen khác ngay!",
+      "status": "success", // hoặc "insufficient_budget", "overkill"
+      "message": "1 câu chào và tóm tắt ngắn gọn.",
+      "budget_analysis": "Nhận xét ngân sách (Hợp lý / Thiếu / Lãng phí). KHÔNG GHI SỐ TIỀN CỤ THỂ.",
+      "suggested_items": [
+        // Bắt buộc chứa ÍT NHẤT 8 món (CPU, Main, RAM, VGA, Ổ Cứng, Nguồn, Case, TẢN NHIỆT CPU). Thêm Chuột, Phím, Màn nếu khách dặn.
+        // Bắt buộc copy tên thật 100% từ kho, cấm chế tên.
+        {{ "category": "...", "name": "...", "slug": "...", "price": 1000000, "image": "Link ảnh", "score": 0 }}
+      ],
+      "performance_summary": "[NẾU CHƠI GAME]: Tự ước lượng mức FPS và Setting đạt được. [NẾU LÀM VIỆC]: Đánh giá khả năng render, xử lý mượt mà, CẤM NHẮC TỚI GAME.",
+      "wizard_advice": "1 lời khuyên chân thành từ chuyên gia."
+    }}
 
 
     """
 
     try:
         # 🚀 1. TẠO CÔNG TẮC TỰ ĐỘNG
-        is_json_mode = "[ARENA_MODE]" in user_msg or "[BUILD_MODE]" in user_msg
+        is_json_mode = "[ARENA_MODE]" in user_msg or "[BUILD_MODE]" in user_msg or "[AUTO_BUILD_MODE]" in user_msg
 
         # 🚀 2. ĐIỀU HƯỚNG SYSTEM PROMPT DYNAMIC
         # Nếu chat bình thường, ta ÉP nó quên cái luật JSON đi và trả lời như con người
