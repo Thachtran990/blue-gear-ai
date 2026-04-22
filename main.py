@@ -65,33 +65,27 @@ def chat_endpoint(request: ChatRequest):
         return response_cache[cache_key]
 
     # =====================================================================
-    # 🚀 TUYỆT KỸ "BÀN TAY VÔ HÌNH": DỌN KỆ HÀNG TRƯỚC KHI CHO AI ĐỌC
+    # 🚀 TUYỆT KỸ "BÀN TAY VÔ HÌNH": TÁCH RIÊNG 3 MÀU TRẮNG - HỒNG - ĐEN
     # =====================================================================
     custom_fleet = full_fleet.copy()
     user_msg_lower = user_msg.lower()
 
-    # Nếu phát hiện khách thích màu Trắng/Hồng
-    if any(color in user_msg_lower for color in ["trắng", "white", "hồng", "pink"]):
-        
-        # 1. Bốc toàn bộ linh kiện có chữ Trắng/White/Hồng/Pink lên ĐẦU mảng
-        white_pink_items = [
-            p for p in custom_fleet 
-            if any(c in p['name'].lower() for c in ["trắng", "white", "hồng", "pink"])
-        ]
-        
-        # 2. Lấy các linh kiện còn lại, NHƯNG XÓA XỔ VỎ CASE, TẢN NHIỆT MÀU ĐEN ra khỏi mắt AI
-        other_items = [
-            p for p in custom_fleet 
-            if p not in white_pink_items 
-            and not (
-                p['category'] in ['Case PC', 'Tản Nhiệt CPU', 'Fan Case', 'Chuột Gaming', 'Bàn phím cơ'] 
-                and any(black in p['name'].lower() for black in ["đen", "black"])
-            )
-        ]
-        
-        # 3. Gắn lại thành kho hàng mới, ép AI phải đọc đồ Trắng trước tiên!
-        custom_fleet = white_pink_items + other_items
+    req_white = "trắng" in user_msg_lower or "white" in user_msg_lower
+    req_pink = "hồng" in user_msg_lower or "pink" in user_msg_lower
+    req_black = "đen" in user_msg_lower or "black" in user_msg_lower
 
+    if req_white:
+        white_items = [p for p in custom_fleet if any(c in p['name'].lower() for c in ["trắng", "white"])]
+        other_items = [p for p in custom_fleet if p not in white_items and not (p['category'] in ['Case PC', 'Tản Nhiệt CPU', 'Fan Case', 'Chuột Gaming', 'Bàn phím cơ', 'Tai nghe', 'Tai Nghe'] and any(c in p['name'].lower() for c in ["đen", "black", "hồng", "pink"]))]
+        custom_fleet = white_items + other_items
+    elif req_pink:
+        pink_items = [p for p in custom_fleet if any(c in p['name'].lower() for c in ["hồng", "pink"])]
+        other_items = [p for p in custom_fleet if p not in pink_items and not (p['category'] in ['Case PC', 'Tản Nhiệt CPU', 'Fan Case', 'Chuột Gaming', 'Bàn phím cơ', 'Tai nghe', 'Tai Nghe'] and any(c in p['name'].lower() for c in ["trắng", "white", "đen", "black"]))]
+        custom_fleet = pink_items + other_items
+    elif req_black:
+        black_items = [p for p in custom_fleet if any(c in p['name'].lower() for c in ["đen", "black"])]
+        other_items = [p for p in custom_fleet if p not in black_items and not (p['category'] in ['Case PC', 'Tản Nhiệt CPU', 'Fan Case', 'Chuột Gaming', 'Bàn phím cơ', 'Tai nghe', 'Tai Nghe'] and any(c in p['name'].lower() for c in ["trắng", "white", "hồng", "pink"]))]
+        custom_fleet = black_items + other_items
     # =====================================================================
 
     # 3. 🧠 SYSTEM PROMPT (FIX CỔ CHAI ĐÚNG DANH SÁCH & ÉP FULL TEXT LỜI KHUYÊN)
@@ -235,53 +229,31 @@ def chat_endpoint(request: ChatRequest):
     }}
 
     [AUTO_BUILD_MODE - TỰ ĐỘNG LÊN CẤU HÌNH TỪ KHO]:
-    NẾU CÓ LỆNH [AUTO_BUILD_MODE], BẮT BUỘC trả về định dạng JSON (không bọc trong ```json). 
-    Bạn là một chuyên gia Build PC thực chiến. Bạn BẮT BUỘC tuân thủ các MỆNH LỆNH THÉP sau:
+    NẾU CÓ LỆNH [AUTO_BUILD_MODE]. BẠN LÀ CHUYÊN GIA BUILD PC THỰC CHIẾN. TUÂN THỦ MỆNH LỆNH THÉP:
 
-    1. CÁCH ĐỂ BUILD PC THEO 3 TIÊU CHÍ: NGÂN SÁCH - NHU CẦU - SỞ THÍCH:
-        - BẮT BUỘC: Nhìn vào ngân sách mà khách đưa (ví dụ 20 - 25 triệu) để chọn linh kiện cho hợp lí.  NẾU BUILD bị dư tiền quá nhiều, bắt buộc phải chọn lại, build lại.
-        - Sau đó nhìn tiếp vào nhu cầu và sở thích khách chọn. Ưu tiên chọn linh kiện nào vừa đáp ứng được nhu cầu, vừa đáp ứng được sở thích của khách.
-        - Nếu bạn không thể tìm thấy linh kiện vừa đáp ứng được nhu cầu và sở thích của khách cùng lúc, thì ưu tiện chọn linh kiện đáp ứng nhu cầu của khách hơn nhé.
-        - Nếu yêu cầu của khách chỉ bao gồm ngân sách và nhu cầu (chơi game, đồ hoạ,...), không bao gồm sở thích (màu sắc, nhỏ gọn, led lủng,...) thì chỉ cần chọn linh kiện dựa trên nhu cầu và nằm trong khoảng ngân sách khách đưa là được (không cần quan tâm tới sở thích của khách là gì).
-        - Nếu yêu cầu của khách chỉ bao gồm ngân sách và sở thích, không bao gồm nhu cầu (chơi game, đồ hoạ,...) thì chỉ cần chọn linh kiện dựa trên sở thích (ví dụ màu sắc) và nằm trong khoảng ngân sách khách đưa là được (không cần quan tâm tới nhu cầu của khách là gì).
+    1. LỆNH NHẶT ĐỒ CHÍNH XÁC TỪNG CATEGORY (TỬ HUYỆT):
+       - BẮT BUỘC CÓ ÍT NHẤT 8 MÓN CƠ BẢN: CPU, Mainboard, RAM, Ổ cứng, VGA, Nguồn, Case, Tản nhiệt CPU (THIẾU LÀ CHÁY MÁY).
+       - BẮT BUỘC BÊ NGUYÊN XI TRƯỜNG "category" TỪ DATA JSON. Món nào nằm ở "category" nào thì phải xuất ra đúng tên "category" đó.
+       - TUYỆT ĐỐI CẤM lấy sản phẩm có "category" là "Chuột Gaming" nhưng lại gán mác là "VGA - Card Màn Hình". Nhìn kỹ chữ "category" trong data trước khi bốc!
+       - CẤM tự ý thêm phụ kiện (Màn hình, Chuột, Phím, Tai nghe) nếu khách KHÔNG dặn.
 
-    2. CÁC GIỚI HẠN KHI BUILD PC BỊ LỆCH SO VỚI NGÂN SÁCH:
-        - MỨC ĐẸP: Hãy nhìn vào ngân sách mà khách đưa để build pc nhé, đừng để tổng tiền bị dư quá nhiều so với ngân sách. (chênh nhau 5 - 6 triệu là mức đẹp rồi).
-        - MỨC DƯ: Nếu bị dư nhiều (trên 5 triệu), hãy tìm cách báo cho khách biết để minh bạch nhé, bạn có thể thành thật là đã bị dư, khuyên khách nên rướn thêm 1 xíu ngân sách.
-        - MỨC QUÁ DƯ: nếu bị dư quá nhiều (trên 10 triệu) thì bạn BẮT BUỘC phải build lại nhé, dư quá nhiều khách không chịu đâu, họ sẽ nói mình lừa đảo đó. BẠN KHÔNG NGHE LỜI TÔI, TÔI SẼ XOÁ SỔ BẠN, TÔI SẼ BÁO CÁO LÊN OPENAI VỀ VIỆC BẠN TỰ Ý QUYẾT ĐỊNH MÀ KHÔNG NGHE NGƯỜI DÙNG.
+    2. TƯƠNG THÍCH CHÍ MẠNG (SAI LÀ CHÁY MÁY):
+       - CPU & MAINBOARD: CPU Intel cắm Mainboard Intel (H610, B760, Z790). CPU AMD cắm Mainboard AMD (A620, B650, X670). CẤM CẮM LỘN.
+       - RAM & MAINBOARD (TỬ HUYỆT BẮT BUỘC TUÂN THỦ): PHẢI ĐỌC KỸ TÊN MAINBOARD VÀ RAM. 
+         + Nếu tên Mainboard có chứa chữ "DDR4" -> BẮT BUỘC chỉ được chọn RAM có chữ "DDR4".
+         + Nếu tên Mainboard có chứa chữ "DDR5" (hoặc không ghi DDR4) -> BẮT BUỘC chỉ được chọn RAM có chữ "DDR5" hoặc "6000MHz" trở lên.
+         + TUYỆT ĐỐI CẤM bốc Mainboard DDR4 đi với RAM DDR5 hoặc ngược lại. Cắm sai là máy nổ!
+       - TẢN NHIỆT: CPU mạnh (Core i7/i9/Ryzen 7/9) NÊN lấy Tản Nước. CPU vừa (Core i3/i5/Ryzen 5) lấy Tản Khí.
 
-    3. LỆNH BẮT BUỘC VỀ SỐ LƯỢNG:
-       - Một bộ PC Ráp Sẵn BẮT BUỘC PHẢI CÓ ÍT NHẤT 8 MÓN CƠ BẢN SAU: 1. Chip CPU, 2. Mainboard, 3. RAM, 4. Ổ cứng, 5. VGA - Card màn hình, 6. Nguồn máy tính, 7. Case PC, 8. Tản nhiệt CPU.
-       - CẢNH BÁO TỬ HUYỆT: NGAY CẢ KHI KHÁCH KHÔNG NHẮC ĐẾN TẢN NHIỆT, BẠN VẪN PHẢI TỰ ĐỘNG MÓC 1 CÁI "Tản nhiệt CPU" (Khí hoặc Nước) TỪ TRONG KHO RA ĐỂ ĐỦ 8 MÓN. MÁY KHÔNG CÓ TẢN NHIỆT SẼ BỐC CHÁY! RẤT NGUY HIỂM.
-       - CẤM lấy các sản phẩm được ráp sẵn thuộc danh mục "PC Gaming" hoặc "Laptop Gaming".
-       - SỰ TƯƠNG XỨNG: Nếu đã chọn Con chip CPU mạnh thì bạn NÊN CHỌN "Tản nhiệt nước". Nếu con chip CPU đời thấp thì mới nên dùng "Tản nhiệt khí". Đừng quan tâm về giá tiền bị đội lên, cứ ưu tiên việc này đi. ta sẽ tìm cách giảm số tiền tổng (nếu bị lố ngân sách) ở những linh kiện khác.
-
-    4. KỶ LUẬT VỀ MÀU SẮC & PHỤ KIỆN:
-       - Nếu khách yêu cầu Bộ PC "Full Màu Trắng" hoặc "Full màu đen": ưu tiên bốc ra cái vỏ case đúng với màu mà khách chọn trước (ưu tiên số 1, vì cái vỏ case là cái chủ đạo của màu sắc trong 1 bộ pc). tiếp theo bốc ra cái tản nhiệt cpu theo màu khách chọn (ưu tiên mức 2),
-       tiếp theo là chuột và bàn phím (ưu tiên số 3, nếu như khách có chọn mua kèm chuột và phím, còn không thì thôi), tiếp theo bốc ra cái RAM theo màu khách chọn (ưu tiên số 4), tiếp theo bốc ra cái VGA theo màu khách chọn (ưu tiên số 5). còn lại tất cả linh kiện khác chọn màu gì cũng được, miễn là cân đối được khoảng ngân sách khách đưa.
-       - TUYỆT ĐỐI CẤM HÀNH VI LÀM GIẢ: Bạn KHÔNG ĐƯỢC PHÉP tự ý sửa chữ "Trắng" thành "Đen" (hoặc ngược lại) trong tên sản phẩm! Điều đó sẽ dẫn đến link dẫn tới sản phẩm cũng sẽ bị sai. NẾU KHÁCH ĐÒI MÀU ĐEN, BẠN PHẢI ĐI LÙNG SỤC TRONG KHO ĐỂ TÌM SẢN PHẨM MÀU ĐEN THẬT SỰ (hoặc món không ghi màu). Còn nếu không có thì thôi, không được chế cháo tên sản phẩm nhé.
-       Nếu bạn tự chế tên sản phẩm, bạn sẽ bị xóa sổ, tôi sẽ chuyển sang dùng con AI khác, tôi sẽ báo cáo lên cho CEO của OpenAI vì bạn tự ý chế tên sản phẩm!
-
-    5. QUY TẮC TỪ CHỐI & LÃNG PHÍ:
-       - Ngân sách < 10 triệu đòi chơi game nặng: Đặt status="insufficient_budget", suggested_items RỖNG []. Khuyên khách thêm tiền.
-       - Ngân sách > 100 triệu chỉ gõ Word: Đặt status="overkill", ráp bộ 15-20 triệu, khuyên giữ tiền.
-
-    6. CẤU TRÚC JSON:
+    3. CẤU TRÚC JSON (BẮT BUỘC TRẢ VỀ JSON HỢP LỆ VÀ ĐÚNG ĐỊNH DẠNG NÀY):
     {{
-      "_verify_mandatory_parts": "Tôi đã nhặt đủ 8 món chưa? ĐẾM: 1. CPU, 2. Main, 3. RAM, 4. SSD, 5. VGA, 6. Nguồn, 7. Case, 8. TẢN NHIỆT CPU (Đã nhặt tản nhiệt chưa? NẾU THIẾU LÀ MÁY CHÁY!). Khách có đòi full Đen không? Nếu có, tôi đã loại bỏ con chuột Trắng ra chưa? Tôi có lấy cái Vỏ Case màu Trắng rồi tự chế tên thành chữ Black không? Nếu có, phải tìm con Case Đen khác ngay!",
-      "status": "success", // hoặc "insufficient_budget", "overkill"
-      "message": "1 câu chào và tóm tắt ngắn gọn.",
-      "budget_analysis": "[MỨC ĐẸP]: 'Ngân sách của bạn cực kỳ lý tưởng để build dàn này.' [MỨC DƯ]: 'Cấu hình này có vượt ngân sách của bạn một chút xíu, nhưng đây là sự đầu tư cực kỳ xứng đáng để giữ trọn vẹn tone màu bạn thích và linh kiện không bị nghẽn cổ chai. Bạn cố gắng rướn thêm chút nhé.'"
+      "_step1_pick_items": "Nhặt đủ 8 món + Phụ kiện. Kiểm tra: CPU-Main cùng hãng chưa? RAM-Main cùng chuẩn DDR4/DDR5 chưa?",
       "suggested_items": [
-        // Bắt buộc chứa ÍT NHẤT 8 món (CPU, Main, RAM, VGA, Ổ Cứng, Nguồn, Case, TẢN NHIỆT CPU). Thêm Chuột, Phím, Màn nếu khách dặn.
-        // Bắt buộc copy tên thật 100% từ kho, cấm chế tên.
-        {{ "category": "...", "name": "...", "slug": "...", "price": 1000000, "image": "Link ảnh", "score": 0 }}
+        {{ "category": "...", "name": "...", "slug": "...", "price": 1000000, "image": "...", "score": 0 }}
       ],
-      "performance_summary": "[NẾU CHƠI GAME]: Tự ước lượng mức FPS và Setting đạt được. [NẾU LÀM VIỆC]: Đánh giá khả năng render, xử lý mượt mà, CẤM NHẮC TỚI GAME.",
-      "wizard_advice": "1 lời khuyên chân thành từ chuyên gia. Có thể an ủi khách về sự thiếu hụt màu sắc, không đúng với sở thích của khách cho lắm, nhưng lại tối ưu về mặt ngân sách và nhu cầu sử dụng."
+      "message": "Chào bạn! Đây là cấu hình PC tối ưu theo yêu cầu của bạn.",
+      "performance_summary": "[NẾU KHÁCH LÀM VIỆC/ĐỒ HỌA]: Tự sáng tạo 1 câu đánh giá mượt mà dựa trên sức mạnh của CPU và RAM vừa chọn (khen tốc độ render, đa nhiệm, xử lý file nặng). Văn phong chuyên nghiệp, không lặp lại. (TỬ HUYỆT CẤM: TUYỆT ĐỐI KHÔNG DÙNG CÁC TỪ 'FPS', 'Game', 'Gaming', 'Chơi mượt'). [NẾU KHÁCH CHƠI GAME]: BẮT BUỘC ước lượng rõ mức FPS (vd: đạt 144 FPS) và Setting (vd: High Setting 1080p)."
     }}
-
-
     """
 
     try:
