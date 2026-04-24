@@ -221,6 +221,14 @@ def chat_endpoint(request: ChatRequest):
             {{
                 "name": "Tên thông số 2 (Ví dụ: Xung nhịp, hoặc Tốc độ đọc)", 
                 "values": ["Giá trị của SP 1", "Giá trị của SP 2"]
+            }},
+            {{
+                "name": "Tên thông số 2 (Ví dụ: Xung nhịp, hoặc Tốc độ đọc)", 
+                "values": ["Giá trị của SP 1", "Giá trị của SP 2"]
+            }},
+            {{
+                "name": "Tên thông số 2 (Ví dụ: Xung nhịp, hoặc Tốc độ đọc)", 
+                "values": ["Giá trị của SP 1", "Giá trị của SP 2"]
             }}
         ],
         "analysis": "Viết 1 đoạn phân tích rõ ràng ưu nhược điểm, sự khác biệt giữa các sản phẩm này.",
