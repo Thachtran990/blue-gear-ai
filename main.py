@@ -295,22 +295,36 @@ def chat_endpoint(request: ChatRequest):
         response = client.chat.completions.create(**api_params)
         answer = response.choices[0].message.content
         
-        # 🚀 5. BỘ LỌC DỰ PHÒNG (FALLBACK)
-        # Lỡ con AI nó "ngáo" vẫn nhả JSON khi chat thường, ta dùng Python bóc tách lấy text luôn
+        # 🚀 5. BỘ LỌC DỰ PHÒNG (FALLBACK) & CẬP NHẬT LINK DEPLOY
         if not is_json_mode:
             try:
                 parsed_ans = json.loads(answer)
                 if "answer" in parsed_ans:
                     answer = parsed_ans["answer"]
             except:
-                pass # Nếu nó đã là text thường (ko parse được JSON) thì bỏ qua, quá tốt!
+                pass 
 
         if is_json_mode and "```" in answer:
             answer = answer.replace("```json", "").replace("```", "").strip()
 
-        bad_domains = ["[https://example.com](https://example.com)", "[http://example.com](http://example.com)", "[https://bluegear.com](https://bluegear.com)", "localhost:3000", "http://localhost:8000"]
-        for domain in bad_domains:
+        # 🌐 Link Frontend thực tế trên Render để AI trả về link chuẩn
+        frontend_live_url = "[https://gaminggearshop-frontend.onrender.com](https://gaminggearshop-frontend.onrender.com)"
+
+        # Danh sách domain rác hoặc link API cần xóa hẳn khỏi câu trả lời
+        trash_domains = [
+            "[https://example.com](https://example.com)", 
+            "[http://example.com](http://example.com)", 
+            "[https://bluegear.com](https://bluegear.com)", 
+            "http://localhost:8000"
+        ]
+        
+        for domain in trash_domains:
             answer = answer.replace(domain, "")
+
+        # Chuyển đổi toàn bộ localhost:3000 sang link Render thật
+        # Giúp các link sản phẩm AI nhả ra có thể click được trên web đã deploy
+        answer = answer.replace("localhost:3000", frontend_live_url)
+        answer = answer.replace("http://localhost:3000", frontend_live_url)
 
         result = {"answer": answer, "using_search": False}
         if len(user_msg) > 10: response_cache[cache_key] = result
